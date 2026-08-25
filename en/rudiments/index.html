@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper" data-lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>RudiMaster — drum rudiment practice with metronome and scrolling notation</title>
+<meta name="description" content="Free metronome with animated notation to practise snare drum rudiments: rolls, paradiddles, flams and drags. Pick a rudiment, set the tempo and play along." />
+<link rel="canonical" href="https://rudimaster.com/en/rudiments/" />
+<link rel="alternate" hreflang="pt" href="https://rudimaster.com/rudimentos/" /><link rel="alternate" hreflang="en" href="https://rudimaster.com/en/rudiments/" /><link rel="alternate" hreflang="es" href="https://rudimaster.com/es/rudimentos/" /><link rel="alternate" hreflang="x-default" href="https://rudimaster.com/en/rudiments/" />
+<meta name="theme-color" content="#E7DFCC" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RudiMaster" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content="RudiMaster — drum rudiment practice with metronome and scrolling notation" />
+<meta property="og:description" content="Free metronome with animated notation to practise snare drum rudiments: rolls, paradiddles, flams and drags. Pick a rudiment, set the tempo and play along." />
+<meta property="og:url" content="https://rudimaster.com/en/rudiments/" />
+<meta property="og:image" content="https://rudimaster.com/og-en.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="RudiMaster — drum rudiment practice with metronome and scrolling notation" />
+<meta name="twitter:description" content="Free metronome with animated notation to practise snare drum rudiments: rolls, paradiddles, flams and drags. Pick a rudiment, set the tempo and play along." />
+<meta name="twitter:image" content="https://rudimaster.com/og-en.png" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="/styles.css" />
+<script>try{var t=localStorage.getItem('rudi-theme');if(t){document.documentElement.dataset.theme=t;if(t==='night')document.querySelector('meta[name=theme-color]').content='#121110';}}catch(e){}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "RudiMaster", "url": "https://rudimaster.com/en/rudiments/", "description": "Free metronome with animated notation to practise snare drum rudiments: rolls, paradiddles, flams and drags. Pick a rudiment, set the tempo and play along.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any", "inLanguage": "en", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "featureList": ["Single stroke roll", "Double stroke roll", "Triple stroke roll", "Five stroke roll", "Six stroke roll", "Seven stroke roll", "Nine stroke roll", "Single paradiddle", "Double paradiddle", "Triple paradiddle", "Paradiddle-diddle", "Flam", "Flam tap", "Flam accent", "Flamacue", "Drag (ruff)", "Single drag tap", "Single ratamacue"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are drum rudiments?", "acceptedAnswer": {"@type": "Answer", "text": "They are the basic sticking patterns that make up a drummer's vocabulary, such as the double stroke roll, the paradiddle and the flam. Combining these blocks is how fills, grooves and solos get built. Practising rudiments is the drummer's equivalent of practising scales."}}, {"@type": "Question", "name": "What tempo should I start at?", "acceptedAnswer": {"@type": "Answer", "text": "Start slow enough to play the pattern with no mistakes at all, usually somewhere between 50 and 70 bpm. Move up in steps of five only after two clean minutes. RudiMaster's progressive practice does this for you."}}, {"@type": "Question", "name": "What do the accents and letters in the notation mean?", "acceptedAnswer": {"@type": "Answer", "text": "The sign that looks like a greater-than symbol marks an accented stroke, played louder and from a higher stick height. The letters under the staff show which hand plays each note. The small notes before a main note are flams, with one grace note, and drags, with two."}}, {"@type": "Question", "name": "Do I need a drum kit?", "acceptedAnswer": {"@type": "Answer", "text": "No. Most rudiment work happens on a practice pad, which is quieter and demands more control. A firm cushion or a folded magazine will do to get started."}}, {"@type": "Question", "name": "Does it work on mobile and offline?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The interface was designed for phones first and the site can be installed to your home screen. After the first load it runs without a connection."}}]}</script>
+</head>
+<body>
+
+<div class="app">
+  <div class="bar compact">
+    <a class="chip back" href="/en/" aria-label="Home">&#8592;</a>
+    <a class="brand" href="/en/">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="var(--btn)"/><circle cx="32" cy="32" r="25" fill="none" stroke="var(--btn-ink)" stroke-opacity=".32" stroke-width="1.9"/><path d="M16.5 19.5 L25.5 23 L16.5 26.5" fill="none" stroke="var(--btn-ink)" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/><rect x="34" y="18.5" width="3.4" height="21.5" rx="1.2" fill="var(--btn-ink)"/><ellipse cx="27.4" cy="39" rx="10" ry="7.2" fill="var(--btn-ink)" transform="rotate(-20 27.4 39)"/></svg>
+      <h1 class="wordmark"><b>Rudi</b><em>Master</em></h1>
+    </a>
+    <div class="tools">
+      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="English">EN</button>
+      <nav class="langmenu" id="langMenu"><a href="/rudimentos/" hreflang="pt-BR" aria-current="false">Português</a><a href="/en/rudiments/" hreflang="en" aria-current="true">English</a><a href="/es/rudimentos/" hreflang="es" aria-current="false">Español</a></nav>
+      <button class="chip" id="theme" aria-label="Toggle theme">&#9681;</button>
+    </div>
+    <p class="tagline">Pad practice for drum rudiments, with metronome and notation.</p>
+  </div>
+
+  <div class="now card">
+    <button class="nav" id="prev" aria-label="&#8592;"><svg viewBox="0 0 12 12"><path d="M8 1L3 6l5 5"/></svg></button>
+    <button class="body" id="openPicker">
+      <span class="eyebrow">Rudiment</span>
+      <span class="name" id="rudName">Single paradiddle</span>
+      <span class="stick" id="rudStick"></span>
+      <span class="meta" id="rudMeta"></span>
+    </button>
+    <button class="nav" id="next" aria-label="&#8594;"><svg viewBox="0 0 12 12"><path d="M4 1l5 5-5 5"/></svg></button>
+  </div>
+
+  <div class="strip">
+    <span class="tagsig" id="stripTag">4/4</span>
+    <span class="lamp" id="lamp"></span>
+    <canvas id="score" aria-label="Rudiment"></canvas>
+    <span class="fade l"></span><span class="fade r"></span>
+  </div>
+
+  <div class="console card">
+    <div class="deck">
+      <div class="pad" id="pad">
+        <button id="play" aria-label="Play"><svg viewBox="0 0 24 24" id="playIcon"><path d="M7 4l13 8-13 8z"/></svg></button>
+      </div>
+      <div class="tempo">
+        <div class="stepper">
+          <button class="step" id="minus" aria-label="-5 bpm">&minus;5</button>
+          <div class="readout"><b id="bpmOut">100</b><span id="bpmUnit">bpm · quarter note</span></div>
+          <button class="step" id="plus" aria-label="+5 bpm">+5</button>
+        </div>
+        <input type="range" id="bpm" min="30" max="280" step="1" value="100" aria-label="bpm" />
+        <div class="tempo-row">
+          <button class="ghost" id="tap">Tap tempo</button>
+          <span class="counter" id="counter">&mdash;</span>
+        </div>
+      </div>
+    </div>
+    <p class="hint" id="hint">tap to start</p>
+  </div>
+
+  <details class="sheet card">
+    <summary>Settings</summary>
+    <div class="body">
+      <div><span class="lab">Time signature</span><div class="seg" id="segSig"></div></div>
+      <div><span class="lab">Leading hand</span><div class="seg" id="segHand">
+        <button data-v="R" aria-pressed="true">Right</button>
+        <button data-v="L" aria-pressed="false">Left</button>
+      </div></div>
+      <div><span class="lab">Sound &amp; reading</span>
+        <div class="checks">
+          <label class="chk"><input type="checkbox" id="optMet" checked /> <span>Metronome</span></label>
+          <label class="chk"><input type="checkbox" id="optRud" checked /> <span>Rudiment</span></label>
+          <label class="chk"><input type="checkbox" id="optStick" checked /> <span>Sticking</span></label>
+          <label class="chk"><input type="checkbox" id="optCount" checked /> <span>Count-in</span></label>
+        </div>
+      </div>
+      <div class="pair">
+        <div><label class="lab" for="volMet">Metronome volume</label><input type="range" id="volMet" min="0" max="100" value="65" /></div>
+        <div><label class="lab" for="volRud">Rudiment volume</label><input type="range" id="volRud" min="0" max="100" value="70" /></div>
+      </div>
+      <div><span class="lab">Progressive practice</span>
+        <div class="checks"><label class="chk"><input type="checkbox" id="optProg" /> <span>Speed up automatically</span></label></div>
+        <div class="prog">
+          <input type="number" id="progStep" value="4" min="1" max="20" inputmode="numeric" aria-label="bpm" /> <span>bpm every</span>
+          <input type="number" id="progEvery" value="8" min="1" max="64" inputmode="numeric" aria-label="bars" /> <span>bars</span>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <p class="modeswitch"><a href="/en/metronome/">Metronome only &#8594;</a></p>
+  <p class="keys"><kbd>space</kbd> play and stop · <kbd>↑</kbd><kbd>↓</kbd> change bpm</p>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Rudiment">
+    <div class="head">
+      <div class="grab"></div>
+      <div class="search">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L17 17"/></svg>
+        <input id="search" type="search" autocomplete="off" placeholder="Search rudiment" aria-label="Search rudiment" />
+      </div>
+    </div>
+    <div class="list" id="rudList"></div>
+  </div>
+</div>
+
+<main class="content">
+  <section>
+    <h2>How to practise with RudiMaster</h2>
+    <p>RudiMaster puts together two things that usually sit apart on the shelf: the metronome and the rudiment sheet. Notation scrolls from right to left, and whatever sits on the red line is what you play right now. Works for snare, practice pad, drum kit or a couch cushion.</p>
+    <ol><li>Pick a rudiment from the list, grouped into rolls, paradiddles, flams and drags.</li><li>Set the time signature and tempo. If you don't know the speed, tap the pulse you have in mind on the tap tempo button.</li><li>Hit play. One count-in bar runs before the rudiment starts.</li><li>Once the pattern feels comfortable, turn on progressive practice and let the tempo climb on its own every few bars.</li></ol>
+  </section>
+  <section>
+    <h2>Rudiments included</h2>
+    <p>Eighteen rudiments with sticking, accents, flams and drags written in real notation. R and L mark the right and left hand, and can be swapped for left-handed players.</p>
+    <div class="fam"><h3>Rolls</h3><ul class="rudlist"><li><b>Single stroke roll</b><code>R L R L R L R L</code></li><li><b>Double stroke roll</b><code>R R L L R R L L</code></li><li><b>Triple stroke roll</b><code>R R R L L L R R R L L L</code></li><li><b>Five stroke roll</b><code>R R L L R L L R R L</code></li><li><b>Six stroke roll</b><code>R L L R R L L R R L L R</code></li><li><b>Seven stroke roll</b><code>R R L L R R L L L R R L L R</code></li><li><b>Nine stroke roll</b><code>R R L L R R L L R L L R R L L R R L</code></li></ul></div><div class="fam"><h3>Paradiddles</h3><ul class="rudlist"><li><b>Single paradiddle</b><code>R L R R L R L L</code></li><li><b>Double paradiddle</b><code>R L R L R R L R L R L L</code></li><li><b>Triple paradiddle</b><code>R L R L R L R R L R L R L R L L</code></li><li><b>Paradiddle-diddle</b><code>R L R R L L R L R R L L</code></li></ul></div><div class="fam"><h3>Flams</h3><ul class="rudlist"><li><b>Flam</b><code>R L R L</code></li><li><b>Flam tap</b><code>R R L L</code></li><li><b>Flam accent</b><code>R L R L R L</code></li><li><b>Flamacue</b><code>R L R L R L R L R L</code></li></ul></div><div class="fam"><h3>Drags</h3><ul class="rudlist"><li><b>Drag (ruff)</b><code>R L R L</code></li><li><b>Single drag tap</b><code>R L L R</code></li><li><b>Single ratamacue</b><code>R L R L L R L R</code></li></ul></div>
+  </section>
+  <section>
+    <h2>Frequently asked questions</h2>
+    <div class="faq"><details><summary>What are drum rudiments?</summary><p>They are the basic sticking patterns that make up a drummer's vocabulary, such as the double stroke roll, the paradiddle and the flam. Combining these blocks is how fills, grooves and solos get built. Practising rudiments is the drummer's equivalent of practising scales.</p></details><details><summary>What tempo should I start at?</summary><p>Start slow enough to play the pattern with no mistakes at all, usually somewhere between 50 and 70 bpm. Move up in steps of five only after two clean minutes. RudiMaster's progressive practice does this for you.</p></details><details><summary>What do the accents and letters in the notation mean?</summary><p>The sign that looks like a greater-than symbol marks an accented stroke, played louder and from a higher stick height. The letters under the staff show which hand plays each note. The small notes before a main note are flams, with one grace note, and drags, with two.</p></details><details><summary>Do I need a drum kit?</summary><p>No. Most rudiment work happens on a practice pad, which is quieter and demands more control. A firm cushion or a folded magazine will do to get started.</p></details><details><summary>Does it work on mobile and offline?</summary><p>Yes. The interface was designed for phones first and the site can be installed to your home screen. After the first load it runs without a connection.</p></details></div>
+  </section>
+</main>
+
+<footer class="sitefoot">
+  <span>RudiMaster &middot; Built for people who practise snare.</span>
+  <span><a href="/en/support/"><strong>Support</strong></a> &middot; <a href="/rudimentos/" hreflang="pt-BR">Português</a> · <a href="/es/rudimentos/" hreflang="es">Español</a></span>
+</footer>
+
+<script src="/i18n.js"></script>
+<script src="/app.js" defer></script>
+</body>
+</html>
