@@ -101,14 +101,14 @@ input[type=range]{width:100%;height:34px;accent-color:var(--red);background:tran
 .sheet .body{padding:0 16px 18px;display:flex;flex-direction:column;gap:17px}
 .lab{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
 .seg{display:flex;gap:6px;flex-wrap:wrap}
-.seg button{flex:1;min-width:58px;min-height:46px;border:1.5px solid var(--line-2);border-radius:11px;font-family:var(--mono);font-size:15px}
+.seg button{flex:1 1 auto;min-width:0;min-height:46px;padding:0 14px;white-space:nowrap;border:1.5px solid var(--line-2);border-radius:11px;font-family:var(--mono);font-size:15px}
 .seg button[aria-pressed="true"]{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
 .checks{display:flex;flex-wrap:wrap;gap:8px}
 .chk{display:inline-flex;align-items:center;gap:9px;border:1.5px solid var(--line-2);border-radius:999px;padding:10px 16px;min-height:46px;font-size:15px;cursor:pointer}
 .chk input{appearance:none;-webkit-appearance:none;width:19px;height:19px;border-radius:50%;border:1.5px solid var(--line-2);flex:none;position:relative}
 .chk input:checked{background:var(--red);border-color:var(--red)}
 .chk input:checked::after{content:"";position:absolute;left:5.5px;top:2.5px;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg)}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
 .prog{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px;color:var(--ink-2);margin-top:10px}
 .prog input{width:72px;min-height:46px;font:inherit;font-size:16px;font-family:var(--mono);color:var(--ink);background:var(--sunk);border:1.5px solid var(--line);border-radius:11px;padding:6px 10px;text-align:center}
 .keys{font-size:12.5px;color:var(--ink-3);text-align:center;padding:2px 8px}
@@ -165,9 +165,12 @@ kbd{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line-2);bord
   .modal{border-radius:20px;max-height:80vh}
 }
 @media (min-width:900px){
-  .app{display:grid;grid-template-columns:1fr 330px;grid-template-areas:"bar bar" "now now" "strip strip" "console sheet" "keys keys";align-items:start;gap:15px}
-  .bar{grid-area:bar} .now{grid-area:now} .strip{grid-area:strip}
-  .console{grid-area:console} .sheet{grid-area:sheet} .keys{grid-area:keys}
+  .app.rudpage{display:grid;grid-template-columns:1fr 330px;
+    grid-template-areas:"bar bar" "now now" "strip strip" "console sheet" "switch switch" "keys keys";
+    align-items:start;gap:15px}
+  .app.rudpage>.bar{grid-area:bar} .app.rudpage>.now{grid-area:now} .app.rudpage>.strip{grid-area:strip}
+  .app.rudpage>.console{grid-area:console} .app.rudpage>.sheet{grid-area:sheet}
+  .app.rudpage>.modeswitch{grid-area:switch} .app.rudpage>.keys{grid-area:keys}
   .strip canvas{height:236px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -236,6 +239,13 @@ kbd{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line-2);bord
   .choices{grid-template-columns:1fr 1fr;align-items:stretch}
   .choice{flex-direction:column;align-items:flex-start;gap:14px;padding:24px 22px}
   .choice .glyph{width:64px;height:64px}
-  .metcfg{display:grid;grid-template-columns:1fr 1fr;gap:20px 26px}
-  .metcfg .lughint{grid-column:1 / -1;margin-top:-8px}
+  .metcfg{display:grid;grid-template-columns:1fr 1fr;gap:20px 26px;align-items:start}
+  .metcfg .wide,.metcfg .lughint{grid-column:1 / -1}
+  .metcfg .lughint{margin-top:-6px}
+}
+.app.metpage{max-width:860px}
+@media (max-width:400px){
+  .bar.compact .wordmark{font-size:25px}
+  .bar.compact .brand .mark{width:30px;height:30px}
+  .chip{padding:0 12px}
 }

@@ -316,7 +316,7 @@ TEMPLATE = """<!DOCTYPE html>
 </head>
 <body>
 
-<div class="app">
+<div class="app rudpage">
   <div class="bar compact">
     <a class="chip back" href="{homepath}" aria-label="{homelab}">&#8592;</a>
     <a class="brand" href="{homepath}">
@@ -753,7 +753,7 @@ MET_TEMPLATE = """<!DOCTYPE html>
         <button class="step sm" id="beatsPlus" aria-label="+1">+</button>
       </div>
     </div>
-    <div class="field">
+    <div class="field wide">
       <span class="lab">{subLab}</span>
       <div class="seg" id="segSub">
         <button data-v="1" aria-pressed="true">{sub1}</button>
