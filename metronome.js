@@ -1,6 +1,12 @@
 (function(){
 "use strict";
 
+// Evento opcional. O Vercel so registra eventos custom em plano Pro,
+// entao aqui ele simplesmente nao faz nada ate voce migrar.
+function track(name, data){
+  try{ if (window.va) window.va('event', { name: name, data: data }); }catch(e){}
+}
+
 var lang = document.documentElement.dataset.lang || 'pt';
 var D = window.RUDI_I18N[lang];
 
@@ -61,12 +67,14 @@ function start(){
   els.playIcon.innerHTML = '<rect x="6" y="5" width="4.5" height="14" rx="1"/><rect x="13.5" y="5" width="4.5" height="14" rx="1"/>';
   els.play.setAttribute('aria-label', D.stop);
   timer = setInterval(schedule, 25); schedule(); lock(true);
+  document.body.classList.add('is-playing');
+  track('practice_start', { mode: 'metronome', beats: beats, subdivision: sub, bpm: bpm });
 }
 function stop(){
   playing = false; clearInterval(timer); timer = null; visual = [];
   els.playIcon.innerHTML = '<path d="M7 4l13 8-13 8z"/>';
   els.play.setAttribute('aria-label', D.play);
-  lock(false);
+  lock(false); document.body.classList.remove('is-playing');
 }
 function restart(){ if (playing){ stop(); start(); } }
 

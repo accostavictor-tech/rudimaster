@@ -31,6 +31,7 @@
 <script>try{var t=localStorage.getItem('rudi-theme');if(t){document.documentElement.dataset.theme=t;if(t==='night')document.querySelector('meta[name=theme-color]').content='#121110';}}catch(e){}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "RudiMaster", "url": "https://rudimaster.com/metronomo/", "description": "Metrônomo online preciso, com acento ou silêncio em cada tempo, subdivisão em colcheias, tercinas e semicolcheias, tap tempo e aceleração progressiva. Sem anúncios.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any", "inLanguage": "pt-BR", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "featureList": ["Rufo simples", "Rufo duplo", "Rufo triplo", "Rufo de 5 toques", "Rufo de 6 toques", "Rufo de 7 toques", "Rufo de 9 toques", "Paradiddle simples", "Paradiddle duplo", "Paradiddle triplo", "Paradiddle-diddle", "Flam", "Flam tap", "Flam accent", "Flamacue", "Drag", "Drag tap simples", "Ratamacue simples"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O metrônomo funciona offline?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Depois do primeiro carregamento a página funciona sem internet, e dá para instalar na tela inicial do celular."}}, {"@type": "Question", "name": "Por que silenciar alguns tempos?", "acceptedAnswer": {"@type": "Answer", "text": "Tocar com alguns tempos mudos obriga você a sustentar o pulso por conta própria. É um dos exercícios mais eficientes para melhorar tempo interno, e fica evidente quando você desacelera ou acelera sem perceber."}}, {"@type": "Question", "name": "Qual a diferença para o modo rudimentos?", "acceptedAnswer": {"@type": "Answer", "text": "No modo rudimentos, além do clique, a partitura do rudimento escolhido corre na tela e o padrão toca junto, servindo de guia."}}]}</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -42,7 +43,7 @@
       <span class="wordmark"><b>Rudi</b><em>Master</em></span>
     </a>
     <div class="tools">
-      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="Português">PT</button>
+      <a class="chip heart" href="/apoiar/" aria-label="Apoiar o projeto" title="Apoiar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.2-4.5-7.2-9.2a4 4 0 0 1 7.2-2.5 4 4 0 0 1 7.2 2.5c0 4.7-7.2 9.2-7.2 9.2z"/></svg></a><button class="chip" id="langBtn" aria-haspopup="true" aria-label="Português">PT</button>
       <nav class="langmenu" id="langMenu"><a href="/metronomo/" hreflang="pt-BR" aria-current="true">Português</a><a href="/en/metronome/" hreflang="en" aria-current="false">English</a><a href="/es/metronomo/" hreflang="es" aria-current="false">Español</a></nav>
       <button class="chip" id="theme" aria-label="Alternar tema">&#9681;</button>
     </div>
@@ -128,6 +129,7 @@
   <span><a href="/en/metronome/" hreflang="en">English</a> &middot; <a href="/es/metronomo/" hreflang="es">Español</a></span>
 </footer>
 
+<a class="fab" id="fab" href="/apoiar/" aria-label="Apoiar o projeto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.7-7.5-9.6a4.2 4.2 0 0 1 7.5-2.6 4.2 4.2 0 0 1 7.5 2.6c0 4.9-7.5 9.6-7.5 9.6z"/></svg><span>Apoiar</span></a><button class="fabx" id="fabx" aria-label="Esconder">&times;</button><script>(function(){var f=document.getElementById("fab"),x=document.getElementById("fabx");try{var t=Number(localStorage.getItem("rudi-fab")||0);if(Date.now()-t<2592000000){f.remove();x.remove();return;}}catch(e){}setTimeout(function(){f.classList.add("show");x.classList.add("show");},60000);x.addEventListener("click",function(){f.remove();x.remove();try{localStorage.setItem("rudi-fab",String(Date.now()));}catch(e){}});})();</script>
 <script src="/i18n.js"></script>
 <script src="/metronome.js" defer></script>
 </body>

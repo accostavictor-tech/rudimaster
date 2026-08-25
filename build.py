@@ -6,6 +6,19 @@ import donate as DN
 BASE = "https://rudimaster.com"   # troque aqui se o dominio mudar
 OUT = os.path.dirname(os.path.abspath(__file__))
 
+# Analytics. Vercel Web Analytics e sem cookie e nao exige banner de consentimento.
+# Precisa estar habilitado em Settings > Analytics no painel do projeto.
+VERCEL_ANALYTICS = True
+VERCEL_SPEED_INSIGHTS = False
+
+ANALYTICS_TAG = ""
+if VERCEL_ANALYTICS:
+    ANALYTICS_TAG += '<script defer src="/_vercel/insights/script.js"></script>\n'
+if VERCEL_SPEED_INSIGHTS:
+    ANALYTICS_TAG += '<script defer src="/_vercel/speed-insights/script.js"></script>\n'
+
+
+
 UI = {
 "pt": {
   "home":"Início","toRud":"Treinar rudimentos","toMet":"Só o metrônomo","back":"Início",
@@ -272,6 +285,32 @@ def jsonld(code, seo=None, path=None, extra_type="WebApplication"):
     return ('<script type="application/ld+json">%s</script>\n<script type="application/ld+json">%s</script>'
             % (json.dumps(app, ensure_ascii=False), json.dumps(faq, ensure_ascii=False)))
 
+FAB_LABEL = {"pt":"Apoiar o projeto","en":"Support the project","es":"Apoyar el proyecto"}
+FAB_CLOSE = {"pt":"Esconder","en":"Hide","es":"Ocultar"}
+
+
+def heart(code):
+    return ('<a class="chip heart" href="%s" aria-label="%s" title="%s">'
+            '<svg viewBox="0 0 24 24" aria-hidden="true">'
+            '<path d="M12 20.3s-7.2-4.5-7.2-9.2a4 4 0 0 1 7.2-2.5 4 4 0 0 1 7.2 2.5c0 4.7-7.2 9.2-7.2 9.2z"/>'
+            '</svg></a>' % (DN.PATHS[code], esc(FAB_LABEL[code]), esc(DN.NAV[code])))
+
+
+def fab(code):
+    """Bolha flutuante de apoio. Some enquanto o metronomo esta tocando."""
+    return (
+      '<a class="fab" id="fab" href="%s" aria-label="%s">'
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.7-7.5-9.6a4.2 4.2 0 0 1 7.5-2.6 4.2 4.2 0 0 1 7.5 2.6c0 4.9-7.5 9.6-7.5 9.6z"/></svg>'
+      '<span>%s</span></a>'
+      '<button class="fabx" id="fabx" aria-label="%s">&times;</button>'
+      '<script>(function(){var f=document.getElementById("fab"),x=document.getElementById("fabx");'
+      'try{var t=Number(localStorage.getItem("rudi-fab")||0);'
+      'if(Date.now()-t<2592000000){f.remove();x.remove();return;}}catch(e){}'
+      'setTimeout(function(){f.classList.add("show");x.classList.add("show");},60000);'
+      'x.addEventListener("click",function(){f.remove();x.remove();'
+      'try{localStorage.setItem("rudi-fab",String(Date.now()));}catch(e){}});})();</script>'
+      % (DN.PATHS[code], esc(FAB_LABEL[code]), esc(DN.NAV[code]), esc(FAB_CLOSE[code])))
+
 MARK = ('<svg class="mark" viewBox="0 0 64 64" aria-hidden="true">'
   '<circle cx="32" cy="32" r="32" fill="var(--btn)"/>'
   '<circle cx="32" cy="32" r="25" fill="none" stroke="var(--btn-ink)" stroke-opacity=".32" stroke-width="1.9"/>'
@@ -324,7 +363,7 @@ TEMPLATE = """<!DOCTYPE html>
       <h1 class="wordmark"><b>Rudi</b><em>Master</em></h1>
     </a>
     <div class="tools">
-      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
+      {heart}<button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
       <nav class="langmenu" id="langMenu">{langmenu}</nav>
       <button class="chip" id="theme" aria-label="{theme}">&#9681;</button>
     </div>
@@ -439,6 +478,7 @@ TEMPLATE = """<!DOCTYPE html>
   <span><a href="{donatepath}"><strong>{donatenav}</strong></a> &middot; {footlinks}</span>
 </footer>
 
+{fab}
 <script src="/i18n.js"></script>
 <script src="/app.js" defer></script>
 </body>
@@ -482,7 +522,7 @@ DONATE_TEMPLATE = """<!DOCTYPE html>
       <span class="wordmark"><b>Rudi</b><em>Master</em></span>
     </a>
     <div class="tools">
-      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
+      {heart}<button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
       <nav class="langmenu" id="langMenu">{langmenu}</nav>
       <button class="chip" id="theme" aria-label="{theme}">&#9681;</button>
     </div>
@@ -493,14 +533,13 @@ DONATE_TEMPLATE = """<!DOCTYPE html>
   <h1 class="pagetitle">{h1}</h1>
   <p class="lead">{lead}</p>
 
-  <section>
-    <h2>{whatTitle}</h2>
-    <ul class="ticks">{what}</ul>
+  <section class="first">
+    {options}
   </section>
 
   <section>
-    <h2>{howTitle}</h2>
-    {options}
+    <h2>{whatTitle}</h2>
+    <ul class="ticks">{what}</ul>
   </section>
 
   <section>
@@ -587,7 +626,7 @@ def render_donate(code):
         whatTitle=esc(c["whatTitle"]), what="".join("<li>%s</li>" % esc(x) for x in c["what"]),
         howTitle=esc(c["howTitle"]), options=donate_options(code),
         freeTitle=esc(c["freeTitle"]), free="".join("<li>%s</li>" % esc(x) for x in c["free"]),
-        thanks=esc(c["thanks"]), back=esc(c["back"]), footlinks=footlinks)
+        thanks=esc(c["thanks"]), back=esc(c["back"]), footlinks=footlinks, heart="")
 
 HEAD_COMMON = """<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
@@ -634,7 +673,7 @@ HOME_TEMPLATE = """<!DOCTYPE html>
       <span class="wordmark"><b>Rudi</b><em>Master</em></span>
     </div>
     <div class="tools">
-      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
+      {heart}<button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
       <nav class="langmenu" id="langMenu">{langmenu}</nav>
       <button class="chip" id="theme" aria-label="{theme}">&#9681;</button>
     </div>
@@ -680,6 +719,7 @@ HOME_TEMPLATE = """<!DOCTYPE html>
   <span>{footlinks}</span>
 </footer>
 
+{fab}
 <script src="/i18n.js"></script>
 <script>
 (function(){{
@@ -715,7 +755,7 @@ MET_TEMPLATE = """<!DOCTYPE html>
       <span class="wordmark"><b>Rudi</b><em>Master</em></span>
     </a>
     <div class="tools">
-      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
+      {heart}<button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
       <nav class="langmenu" id="langMenu">{langmenu}</nav>
       <button class="chip" id="theme" aria-label="{theme}">&#9681;</button>
     </div>
@@ -801,6 +841,7 @@ MET_TEMPLATE = """<!DOCTYPE html>
   <span>{footlinks}</span>
 </footer>
 
+{fab}
 <script src="/i18n.js"></script>
 <script src="/metronome.js" defer></script>
 </body>
@@ -826,7 +867,7 @@ def render_home(code):
         metTitle=esc(s["metTitle"]), metDesc=esc(s["metDesc"]),
         rudTitle=esc(s["rudTitle"]), rudDesc=esc(s["rudDesc"]), cta=esc(s["cta"]),
         aboutTitle=esc(s["aboutTitle"]), about=esc(s["about"]),
-        donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]), footlinks=footlinks)
+        donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]), footlinks=footlinks, fab=fab(code), heart=heart(code))
 
 
 def render_met(code):
@@ -851,7 +892,7 @@ def render_met(code):
         featTitle=esc(s["featTitle"]), feats="".join("<li>%s</li>" % esc(x) for x in s["feats"]),
         faqTitle=esc(s["faqTitle"]),
         faq="".join('<details><summary>%s</summary><p>%s</p></details>' % (esc(q), esc(a)) for q, a in s["faq"]),
-        donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]), footlinks=footlinks)
+        donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]), footlinks=footlinks, fab=fab(code), heart=heart(code))
 
 
 def render(code):
@@ -877,9 +918,12 @@ def render(code):
         listTitle=esc(s["listTitle"]), listIntro=esc(s["listIntro"]), rudlists=rud_lists(code),
         faqTitle=esc(s["faqTitle"]), faq=faq, footNote=esc(s["footNote"]), footlinks=footlinks,
         donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]),
-        homepath=HOME[code], homelab=esc(ui["home"]), metpath=MET[code], tomet=esc(ui["toMet"]))
+        homepath=HOME[code], homelab=esc(ui["home"]), metpath=MET[code], tomet=esc(ui["toMet"]),
+        fab=fab(code), heart=heart(code))
 
 def write(rel, text):
+    if ANALYTICS_TAG and rel.endswith("index.html"):
+        text = text.replace("</head>", ANALYTICS_TAG + "</head>", 1)
     p = os.path.join(OUT, rel)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8").write(text)

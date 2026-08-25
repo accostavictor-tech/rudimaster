@@ -32,6 +32,7 @@
 <script>try{var t=localStorage.getItem('rudi-theme');if(t){document.documentElement.dataset.theme=t;if(t==='night')document.querySelector('meta[name=theme-color]').content='#121110';}}catch(e){}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "RudiMaster", "url": "https://rudimaster.com/rudimentos/", "description": "Metrônomo grátis com partitura animada para treinar rudimentos de caixa: rufos, paradiddles, flams e drags. Escolha o rudimento, o compasso e o andamento e toque junto.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any", "inLanguage": "pt-BR", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "featureList": ["Rufo simples", "Rufo duplo", "Rufo triplo", "Rufo de 5 toques", "Rufo de 6 toques", "Rufo de 7 toques", "Rufo de 9 toques", "Paradiddle simples", "Paradiddle duplo", "Paradiddle triplo", "Paradiddle-diddle", "Flam", "Flam tap", "Flam accent", "Flamacue", "Drag", "Drag tap simples", "Ratamacue simples"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O que são rudimentos de bateria?", "acceptedAnswer": {"@type": "Answer", "text": "São os padrões básicos de baqueta que formam o vocabulário do baterista, como o rufo duplo, o paradiddle e o flam. Combinando esses blocos você constrói viradas, levadas e solos. Treinar rudimento é o equivalente a estudar escala em um instrumento harmônico."}}, {"@type": "Question", "name": "Em que andamento devo começar?", "acceptedAnswer": {"@type": "Answer", "text": "Comece devagar o bastante para tocar o padrão sem nenhum erro, o que costuma ser entre 50 e 70 bpm. Suba de cinco em cinco apenas quando conseguir dois minutos limpos. O treino progressivo do RudiMaster faz isso automaticamente."}}, {"@type": "Question", "name": "O que significam os acentos e as letras na partitura?", "acceptedAnswer": {"@type": "Answer", "text": "O sinal parecido com um sinal de maior indica o toque acentuado, que é tocado mais forte e com a baqueta mais alta. As letras abaixo da pauta indicam qual mão toca cada nota. As notinhas pequenas antes da nota principal são os flams, com uma nota de ornamento, e os drags, com duas."}}, {"@type": "Question", "name": "Preciso de uma bateria para usar?", "acceptedAnswer": {"@type": "Answer", "text": "Não. A maior parte do treino de rudimento acontece em pad de estudo, que é mais silencioso e exige mais controle. Uma almofada firme ou uma revista dobrada também funcionam para começar."}}, {"@type": "Question", "name": "Funciona no celular e offline?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. A interface foi desenhada primeiro para celular e o site pode ser instalado na tela inicial. Depois do primeiro carregamento ele funciona sem internet."}}]}</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -43,7 +44,7 @@
       <h1 class="wordmark"><b>Rudi</b><em>Master</em></h1>
     </a>
     <div class="tools">
-      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="Português">PT</button>
+      <a class="chip heart" href="/apoiar/" aria-label="Apoiar o projeto" title="Apoiar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.2-4.5-7.2-9.2a4 4 0 0 1 7.2-2.5 4 4 0 0 1 7.2 2.5c0 4.7-7.2 9.2-7.2 9.2z"/></svg></a><button class="chip" id="langBtn" aria-haspopup="true" aria-label="Português">PT</button>
       <nav class="langmenu" id="langMenu"><a href="/rudimentos/" hreflang="pt-BR" aria-current="true">Português</a><a href="/en/rudiments/" hreflang="en" aria-current="false">English</a><a href="/es/rudimentos/" hreflang="es" aria-current="false">Español</a></nav>
       <button class="chip" id="theme" aria-label="Alternar tema">&#9681;</button>
     </div>
@@ -158,6 +159,7 @@
   <span><a href="/apoiar/"><strong>Apoiar</strong></a> &middot; <a href="/en/rudiments/" hreflang="en">English</a> · <a href="/es/rudimentos/" hreflang="es">Español</a></span>
 </footer>
 
+<a class="fab" id="fab" href="/apoiar/" aria-label="Apoiar o projeto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.7-7.5-9.6a4.2 4.2 0 0 1 7.5-2.6 4.2 4.2 0 0 1 7.5 2.6c0 4.9-7.5 9.6-7.5 9.6z"/></svg><span>Apoiar</span></a><button class="fabx" id="fabx" aria-label="Esconder">&times;</button><script>(function(){var f=document.getElementById("fab"),x=document.getElementById("fabx");try{var t=Number(localStorage.getItem("rudi-fab")||0);if(Date.now()-t<2592000000){f.remove();x.remove();return;}}catch(e){}setTimeout(function(){f.classList.add("show");x.classList.add("show");},60000);x.addEventListener("click",function(){f.remove();x.remove();try{localStorage.setItem("rudi-fab",String(Date.now()));}catch(e){}});})();</script>
 <script src="/i18n.js"></script>
 <script src="/app.js" defer></script>
 </body>

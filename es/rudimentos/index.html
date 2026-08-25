@@ -32,6 +32,7 @@
 <script>try{var t=localStorage.getItem('rudi-theme');if(t){document.documentElement.dataset.theme=t;if(t==='night')document.querySelector('meta[name=theme-color]').content='#121110';}}catch(e){}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "RudiMaster", "url": "https://rudimaster.com/es/rudimentos/", "description": "Metrónomo gratis con partitura animada para practicar rudimentos de caja: redobles, paradiddles, flams y drags. Elige el rudimento, el compás y el tempo y toca encima.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any", "inLanguage": "es", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "featureList": ["Redoble simple", "Redoble doble", "Redoble triple", "Redoble de 5 golpes", "Redoble de 6 golpes", "Redoble de 7 golpes", "Redoble de 9 golpes", "Paradiddle simple", "Paradiddle doble", "Paradiddle triple", "Paradiddle-diddle", "Flam", "Flam tap", "Flam accent", "Flamacue", "Drag", "Drag tap simple", "Ratamacue simple"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué son los rudimentos de batería?", "acceptedAnswer": {"@type": "Answer", "text": "Son los patrones básicos de baqueta que forman el vocabulario del baterista, como el redoble doble, el paradiddle y el flam. Combinando estos bloques se construyen fills, grooves y solos. Practicar rudimentos equivale a estudiar escalas en un instrumento armónico."}}, {"@type": "Question", "name": "¿A qué tempo debo empezar?", "acceptedAnswer": {"@type": "Answer", "text": "Empieza lo bastante lento como para tocar el patrón sin ningún error, normalmente entre 50 y 70 bpm. Sube de cinco en cinco solo cuando logres dos minutos limpios. La práctica progresiva de RudiMaster lo hace por ti."}}, {"@type": "Question", "name": "¿Qué significan los acentos y las letras de la partitura?", "acceptedAnswer": {"@type": "Answer", "text": "El signo parecido a un mayor indica un golpe acentuado, tocado más fuerte y con la baqueta más alta. Las letras bajo el pentagrama indican qué mano toca cada nota. Las notas pequeñas antes de la principal son los flams, con una nota de adorno, y los drags, con dos."}}, {"@type": "Question", "name": "¿Necesito una batería?", "acceptedAnswer": {"@type": "Answer", "text": "No. La mayor parte del trabajo de rudimentos se hace en un pad de estudio, más silencioso y más exigente en control. Un cojín firme o una revista doblada sirven para empezar."}}, {"@type": "Question", "name": "¿Funciona en el móvil y sin conexión?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. La interfaz se diseñó primero para móvil y el sitio se puede instalar en la pantalla de inicio. Tras la primera carga funciona sin internet."}}]}</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -43,7 +44,7 @@
       <h1 class="wordmark"><b>Rudi</b><em>Master</em></h1>
     </a>
     <div class="tools">
-      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="Español">ES</button>
+      <a class="chip heart" href="/es/apoyar/" aria-label="Apoyar el proyecto" title="Apoyar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.2-4.5-7.2-9.2a4 4 0 0 1 7.2-2.5 4 4 0 0 1 7.2 2.5c0 4.7-7.2 9.2-7.2 9.2z"/></svg></a><button class="chip" id="langBtn" aria-haspopup="true" aria-label="Español">ES</button>
       <nav class="langmenu" id="langMenu"><a href="/rudimentos/" hreflang="pt-BR" aria-current="false">Português</a><a href="/en/rudiments/" hreflang="en" aria-current="false">English</a><a href="/es/rudimentos/" hreflang="es" aria-current="true">Español</a></nav>
       <button class="chip" id="theme" aria-label="Cambiar tema">&#9681;</button>
     </div>
@@ -158,6 +159,7 @@
   <span><a href="/es/apoyar/"><strong>Apoyar</strong></a> &middot; <a href="/rudimentos/" hreflang="pt-BR">Português</a> · <a href="/en/rudiments/" hreflang="en">English</a></span>
 </footer>
 
+<a class="fab" id="fab" href="/es/apoyar/" aria-label="Apoyar el proyecto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.7-7.5-9.6a4.2 4.2 0 0 1 7.5-2.6 4.2 4.2 0 0 1 7.5 2.6c0 4.9-7.5 9.6-7.5 9.6z"/></svg><span>Apoyar</span></a><button class="fabx" id="fabx" aria-label="Ocultar">&times;</button><script>(function(){var f=document.getElementById("fab"),x=document.getElementById("fabx");try{var t=Number(localStorage.getItem("rudi-fab")||0);if(Date.now()-t<2592000000){f.remove();x.remove();return;}}catch(e){}setTimeout(function(){f.classList.add("show");x.classList.add("show");},60000);x.addEventListener("click",function(){f.remove();x.remove();try{localStorage.setItem("rudi-fab",String(Date.now()));}catch(e){}});})();</script>
 <script src="/i18n.js"></script>
 <script src="/app.js" defer></script>
 </body>

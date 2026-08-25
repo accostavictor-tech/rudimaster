@@ -38,6 +38,20 @@ vercel          # preview
 vercel --prod   # produção
 ```
 
+## Analytics
+
+Usa Vercel Web Analytics, que é sem cookie e não exige banner de consentimento.
+A tag é injetada nas doze páginas pelo `build.py`, a partir das constantes
+`VERCEL_ANALYTICS` e `VERCEL_SPEED_INSIGHTS` no topo do arquivo.
+
+Só funciona depois de habilitar em Settings, Analytics, no painel do projeto.
+O caminho `/_vercel/insights/script.js` só existe quando o recurso está ligado.
+
+O app chama `track('practice_start', ...)` quando alguém aperta o play, com o modo,
+o rudimento, o bpm e a subdivisão. Eventos personalizados só são registrados em
+plano Pro, então no plano gratuito a chamada não faz nada e não quebra nada.
+Se você migrar de plano, os eventos passam a aparecer sem mexer no código.
+
 ## Configurar a página de apoio
 
 Abra `donate.py` e preencha o dicionário `DONATE`. Cada bloco vazio simplesmente não aparece na página, e o build avisa no terminal o que ainda falta.

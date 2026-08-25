@@ -249,3 +249,40 @@ kbd{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line-2);bord
   .bar.compact .brand .mark{width:30px;height:30px}
   .chip{padding:0 12px}
 }
+
+/* --- bolha de apoio --- */
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:40;
+  display:inline-flex;align-items:center;gap:9px;height:50px;padding:0 20px 0 17px;border-radius:999px;
+  background:var(--surface);color:var(--ink);text-decoration:none;font-size:14.5px;font-weight:500;
+  border:1.5px solid var(--line-2);box-shadow:0 4px 14px -4px rgba(25,21,16,.3),0 1px 2px rgba(25,21,16,.1);
+  transition:opacity .2s,transform .2s,background .15s}
+.fab svg{width:19px;height:19px;flex:none;fill:var(--red)}
+.fab:hover{background:var(--raise)}
+.fab:active{transform:scale(.97)}
+.fabx{position:fixed;z-index:41;right:8px;bottom:calc(58px + env(safe-area-inset-bottom));
+  width:26px;height:26px;border-radius:50%;background:var(--surface);color:var(--ink-3);
+  border:1.5px solid var(--line-2);font-size:15px;line-height:1;display:grid;place-items:center;
+  transition:opacity .2s}
+.fabx:hover{color:var(--ink)}
+body.is-playing .fab,body.is-playing .fabx{opacity:0;pointer-events:none;transform:translateY(10px)}
+@media (max-width:560px){
+  .fab span{display:none}
+  .fab{padding:0;width:52px;height:52px;justify-content:center}
+  .fab svg{width:22px;height:22px}
+  .fabx{bottom:calc(60px + env(safe-area-inset-bottom))}
+  .sitefoot,.content{padding-bottom:64px}
+}
+
+/* atalho de apoio no topo */
+.chip.heart{text-decoration:none;padding:0;width:var(--tap)}
+.chip.heart svg{width:20px;height:20px;fill:var(--red)}
+.chip.heart:active{background:var(--sunk)}
+
+/* a bolha entra depois de um minuto de uso */
+.fab,.fabx{opacity:0;pointer-events:none;transform:translateY(10px)}
+.fab.show,.fabx.show{opacity:1;pointer-events:auto;transform:none}
+body.is-playing .fab.show,body.is-playing .fabx.show{opacity:0;pointer-events:none;transform:translateY(10px)}
+
+/* opcoes de doacao no topo da pagina de apoio */
+.page section.first{margin-bottom:40px}
+.page section.first .opt:first-child{border-color:var(--line-2)}
