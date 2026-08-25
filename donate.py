@@ -5,10 +5,10 @@
 # PREENCHA AQUI. Cada bloco vazio simplesmente nao aparece na pagina.
 # ---------------------------------------------------------------------------
 DONATE = {
-    "pix_key":  "",          # chave Pix: e-mail, telefone (+5582...), CPF/CNPJ ou chave aleatoria
-    "pix_name": "",          # nome do recebedor, ate 25 caracteres, sem acento
+    "pix_key":  "rudimasterapp@gmail.com",          # chave Pix: e-mail, telefone (+5582...), CPF/CNPJ ou chave aleatoria
+    "pix_name": "VICTOR A C COSTA",          # nome do recebedor, ate 25 caracteres, sem acento
     "pix_city": "MACEIO",    # cidade, ate 15 caracteres, sem acento
-    "kofi":     "",          # ex.: https://ko-fi.com/rudimaster
+    "kofi":     "https://ko-fi.com/rudimaster",          # ex.: https://ko-fi.com/rudimaster
     "paypal":   "",          # ex.: https://paypal.me/seuusuario
     "stripe":   "",          # link de pagamento avulso do Stripe
 }
@@ -18,7 +18,7 @@ PATHS = {"pt": "/apoiar/", "en": "/en/support/", "es": "/es/apoyar/"}
 COPY = {
 "pt": {
   "title": "Apoie o RudiMaster — mantenha a ferramenta grátis e sem anúncios",
-  "desc": "O RudiMaster é grátis, sem anúncios e sem cadastro. Se ele te ajuda a treinar, você pode apoiar o projeto com qualquer valor via Pix, cartão ou PayPal.",
+  "desc": "O RudiMaster é grátis, sem anúncios e sem cadastro. Se ele te ajuda a treinar, você pode apoiar o projeto com qualquer valor via Pix ou cartão.",
   "h1": "Apoie o projeto",
   "lead": "O RudiMaster é grátis e vai continuar assim. Sem anúncio, sem cadastro, sem versão paga escondida atrás de um paywall. Se ele faz parte do seu treino, uma contribuição ajuda a manter o projeto de pé.",
   "whatTitle": "Para onde vai o dinheiro",
@@ -46,7 +46,7 @@ COPY = {
 },
 "en": {
   "title": "Support RudiMaster — keep the tool free and ad-free",
-  "desc": "RudiMaster is free, ad-free and needs no account. If it helps your practice, you can support the project with any amount by card or PayPal.",
+  "desc": "RudiMaster is free, ad-free and needs no account. If it helps your practice, you can support the project with any amount by Pix or card.",
   "h1": "Support the project",
   "lead": "RudiMaster is free and will stay that way. No ads, no sign-up, no paid tier hidden behind a paywall. If it is part of your practice routine, a contribution helps keep the project running.",
   "whatTitle": "Where the money goes",
@@ -74,7 +74,7 @@ COPY = {
 },
 "es": {
   "title": "Apoya RudiMaster — mantén la herramienta gratis y sin anuncios",
-  "desc": "RudiMaster es gratis, sin anuncios y sin registro. Si te ayuda a practicar, puedes apoyar el proyecto con cualquier cantidad por tarjeta o PayPal.",
+  "desc": "RudiMaster es gratis, sin anuncios y sin registro. Si te ayuda a practicar, puedes apoyar el proyecto con cualquier cantidad por Pix o tarjeta.",
   "h1": "Apoya el proyecto",
   "lead": "RudiMaster es gratis y seguirá siéndolo. Sin anuncios, sin registro, sin versión de pago escondida tras un muro. Si forma parte de tu rutina, una contribución ayuda a mantener el proyecto en pie.",
   "whatTitle": "A dónde va el dinero",
