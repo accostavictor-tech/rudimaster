@@ -149,33 +149,33 @@ SEO = {
 HOME_SEO = {
 "pt": {
   "title":"RudiMaster — metrônomo online e treino de rudimentos de bateria",
-  "desc":"Escolha o metrônomo online, com acento por tempo e subdivisões, ou o treino de rudimentos com partitura animada. Grátis, sem anúncios e sem cadastro.",
-  "h1":"O que você vai treinar hoje?",
-  "lead":"Duas ferramentas para quem estuda no pad ou na caixa. Escolha uma e comece agora, sem cadastro.",
-  "metTitle":"Metrônomo","metDesc":"Andamento, batidas por compasso e subdivisão. Acentue ou silencie cada tempo tocando nos pontos. Tap tempo e aceleração automática.",
-  "rudTitle":"Rudimentos","rudDesc":"Dezoito rudimentos com partitura correndo na tela, sticking, acentos, flams e drags. O metrônomo toca junto.",
+  "desc":"Escolha o metrônomo online, com acento por tempo e subdivisões, ou o treino de rudimentos com partitura animada. Gratuito e sem cadastro.",
+  "h1":"Comece por aqui",
+  "lead":"Duas ferramentas para estudar no pad ou na caixa.",
+  "metTitle":"Metrônomo","metDesc":"Andamento, acentos por tempo e subdivisões. Com tap tempo e aceleração automática.",
+  "rudTitle":"Rudimentos","rudDesc":"Dezoito rudimentos com a partitura correndo na tela e o metrônomo tocando junto.",
   "cta":"Abrir",
   "aboutTitle":"Sobre o RudiMaster",
   "about":"O RudiMaster nasceu de um problema simples: o metrônomo fica num app, a folha de rudimento fica noutro, e o estudo se perde entre os dois. Aqui as duas coisas moram no mesmo lugar, funcionam no celular e não pedem login. O relógio do áudio é o mesmo que move a partitura, então som e imagem nunca saem de sincronia."
 },
 "en": {
   "title":"RudiMaster — online metronome and drum rudiment trainer",
-  "desc":"Pick the online metronome, with per-beat accents and subdivisions, or the rudiment trainer with scrolling notation. Free, ad-free, no sign-up.",
-  "h1":"What are you practising today?",
-  "lead":"Two tools for anyone working on a pad or a snare. Pick one and start now, no sign-up.",
-  "metTitle":"Metronome","metDesc":"Tempo, beats per bar and subdivision. Accent or mute any beat by tapping the dots. Tap tempo and automatic speed-up.",
-  "rudTitle":"Rudiments","rudDesc":"Eighteen rudiments with notation scrolling across the screen, sticking, accents, flams and drags. The metronome plays along.",
+  "desc":"Pick the online metronome, with per-beat accents and subdivisions, or the rudiment trainer with scrolling notation. Free, no sign-up.",
+  "h1":"Start here",
+  "lead":"Two tools for practising on a pad or a snare drum.",
+  "metTitle":"Metronome","metDesc":"Tempo, per-beat accents and subdivisions. With tap tempo and automatic speed-up.",
+  "rudTitle":"Rudiments","rudDesc":"Eighteen rudiments with notation scrolling across the screen and the metronome playing along.",
   "cta":"Open",
   "aboutTitle":"About RudiMaster",
   "about":"RudiMaster started from a simple problem: the metronome lives in one app, the rudiment sheet in another, and practice gets lost between the two. Here both sit in the same place, work on a phone and ask for no login. The audio clock that fires the click is the same one that moves the notation, so sound and image never drift apart."
 },
 "es": {
   "title":"RudiMaster — metrónomo online y entrenador de rudimentos de batería",
-  "desc":"Elige el metrónomo online, con acentos por tiempo y subdivisiones, o el entrenador de rudimentos con partitura animada. Gratis, sin anuncios y sin registro.",
-  "h1":"¿Qué vas a practicar hoy?",
-  "lead":"Dos herramientas para quien estudia en el pad o en la caja. Elige una y empieza ahora, sin registro.",
-  "metTitle":"Metrónomo","metDesc":"Tempo, tiempos por compás y subdivisión. Acentúa o silencia cada tiempo tocando los puntos. Tap tempo y aceleración automática.",
-  "rudTitle":"Rudimentos","rudDesc":"Dieciocho rudimentos con partitura corriendo en la pantalla, sticking, acentos, flams y drags. El metrónomo suena a la vez.",
+  "desc":"Elige el metrónomo online, con acentos por tiempo y subdivisiones, o el entrenador de rudimentos con partitura animada. Gratuito y sin registro.",
+  "h1":"Empieza por aquí",
+  "lead":"Dos herramientas para practicar en el pad o en la caja.",
+  "metTitle":"Metrónomo","metDesc":"Tempo, acentos por tiempo y subdivisiones. Con tap tempo y aceleración automática.",
+  "rudTitle":"Rudimentos","rudDesc":"Dieciocho rudimentos con la partitura corriendo en la pantalla y el metrónomo sonando a la vez.",
   "cta":"Abrir",
   "aboutTitle":"Sobre RudiMaster",
   "about":"RudiMaster nació de un problema simple: el metrónomo está en una app, la hoja de rudimentos en otra, y el estudio se pierde entre las dos. Aquí ambas cosas viven en el mismo sitio, funcionan en el móvil y no piden registro. El reloj de audio que dispara el clic es el mismo que mueve la partitura, así que sonido e imagen nunca se separan."
@@ -184,7 +184,7 @@ HOME_SEO = {
 MET_SEO = {
 "pt": {
   "title":"Metrônomo online grátis — acentos, subdivisões e tap tempo | RudiMaster",
-  "desc":"Metrônomo online preciso, com acento ou silêncio em cada tempo, subdivisão em colcheias, tercinas e semicolcheias, tap tempo e aceleração progressiva. Sem anúncios.",
+  "desc":"Metrônomo online preciso, com acento ou silêncio em cada tempo, subdivisão em colcheias, tercinas e semicolcheias, tap tempo e aceleração progressiva. Gratuito e sem cadastro.",
   "h1sub":"Metrônomo online com acento por tempo, subdivisões e tap tempo",
   "aboutTitle":"Um metrônomo que faz o que o estudo pede",
   "about":"O clique é agendado pelo relógio do áudio do navegador, e não por temporizador de interface, que é o que causa aquela oscilação chata em metrônomo de site. O andamento se mantém estável mesmo com a aba ocupada.",
@@ -202,7 +202,7 @@ MET_SEO = {
 },
 "en": {
   "title":"Free online metronome — accents, subdivisions and tap tempo | RudiMaster",
-  "desc":"Accurate online metronome with per-beat accent or mute, subdivision in eighths, triplets and sixteenths, tap tempo and progressive speed-up. No ads.",
+  "desc":"Accurate online metronome with per-beat accent or mute, subdivision in eighths, triplets and sixteenths, tap tempo and progressive speed-up. Free, no sign-up.",
   "h1sub":"Online metronome with per-beat accents, subdivisions and tap tempo",
   "aboutTitle":"A metronome that does what practice needs",
   "about":"The click is scheduled by the browser's audio clock rather than by an interface timer, which is what causes the annoying wobble in most web metronomes. Tempo stays steady even when the tab is busy.",
@@ -220,7 +220,7 @@ MET_SEO = {
 },
 "es": {
   "title":"Metrónomo online gratis — acentos, subdivisiones y tap tempo | RudiMaster",
-  "desc":"Metrónomo online preciso, con acento o silencio en cada tiempo, subdivisión en corcheas, tresillos y semicorcheas, tap tempo y aceleración progresiva. Sin anuncios.",
+  "desc":"Metrónomo online preciso, con acento o silencio en cada tiempo, subdivisión en corcheas, tresillos y semicorcheas, tap tempo y aceleración progresiva. Gratuito y sin registro.",
   "h1sub":"Metrónomo online con acentos por tiempo, subdivisiones y tap tempo",
   "aboutTitle":"Un metrónomo que hace lo que el estudio pide",
   "about":"El clic lo programa el reloj de audio del navegador y no un temporizador de interfaz, que es lo que provoca esa oscilación molesta en la mayoría de los metrónomos web. El tempo se mantiene estable aunque la pestaña esté ocupada.",
@@ -677,7 +677,6 @@ HOME_TEMPLATE = """<!DOCTYPE html>
       <nav class="langmenu" id="langMenu">{langmenu}</nav>
       <button class="chip" id="theme" aria-label="{theme}">&#9681;</button>
     </div>
-    <p class="tagline">{tagline}</p>
   </div>
 </div>
 
