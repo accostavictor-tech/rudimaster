@@ -1,6 +1,33 @@
 {
   "cleanUrls": true,
   "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/en",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/en/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/rudimentos",
+      "destination": "/pt/rudimentos",
+      "permanent": true
+    },
+    {
+      "source": "/metronomo",
+      "destination": "/pt/metronomo",
+      "permanent": true
+    },
+    {
+      "source": "/apoiar",
+      "destination": "/pt/apoiar",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

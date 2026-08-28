@@ -5,17 +5,18 @@ Prática de rudimentos no pad, com metrônomo e partitura animada. Site estátic
 ## Estrutura
 
 ```
-index.html              home em português (escolha entre metrônomo e rudimentos)
-en/index.html es/index.html          home em inglês e espanhol
-metronomo/ en/metronome/ es/metronomo/    tela só do metrônomo
-rudimentos/ en/rudiments/ es/rudimentos/  tela de treino de rudimentos
+index.html              home em inglês, na raiz (escolha entre metrônomo e rudimentos)
+pt/index.html es/index.html          home em português e espanhol
+metronome/ pt/metronomo/ es/metronomo/     tela só do metrônomo
+rudiments/ pt/rudimentos/ es/rudimentos/   tela de treino de rudimentos
+support/ pt/apoiar/ es/apoyar/             página de apoio
+lang.js                 sugere a versão no idioma do navegador, sem redirecionar
 styles.css              estilos compartilhados
 app.js                  motor da tela de rudimentos: áudio, notação e interface
 metronome.js            motor da tela do metrônomo
 i18n.js                 dicionário dos três idiomas (gerado pelo build)
 build.py                gera todas as páginas, i18n.js, sitemap, robots, manifest e vercel.json
 donate.py               configuração, textos e gerador do BR Code Pix da página de apoio
-apoiar/ en/support/ es/apoyar/   página de doação nos três idiomas
 icons.py                gera favicon PNG, ícones do PWA e as imagens de compartilhamento
 favicon.svg             favicon vetorial
 og-pt.png og-en.png og-es.png    imagens de compartilhamento (1200×630)
@@ -51,6 +52,19 @@ O app chama `track('practice_start', ...)` quando alguém aperta o play, com o m
 o rudimento, o bpm e a subdivisão. Eventos personalizados só são registrados em
 plano Pro, então no plano gratuito a chamada não faz nada e não quebra nada.
 Se você migrar de plano, os eventos passam a aparecer sem mexer no código.
+
+## Idiomas e rotas
+
+O inglês fica na raiz, e português e espanhol em subpasta. A ordem vem dos
+dicionários `HOME`, `PATHS` e `MET` no `build.py`, mais `PATHS` no `donate.py`.
+Se trocar de novo, lembre de apagar as pastas antigas antes de rodar o build,
+porque ele escreve mas não remove, e de atualizar os redirecionamentos em
+`vercel.json` (também gerados pelo `build.py`).
+
+Não há redirecionamento automático por idioma. O `lang.js` mostra uma faixa
+sugerindo a versão equivalente quando o idioma do navegador difere do da página,
+e guarda a escolha. Redirecionar automaticamente esconderia as outras versões do
+Googlebot, que rastreia quase sempre a partir dos Estados Unidos.
 
 ## Configurar a página de apoio
 

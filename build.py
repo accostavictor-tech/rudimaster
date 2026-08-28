@@ -245,9 +245,9 @@ PATTERNS = {
 CATS = {"roll":["s1","s2","s3","r5","r6","r7","r9"],"para":["p1","p2","p3","pd"],
         "flam":["f1","f2","f3","f4"],"drag":["d1","d2","d3"]}
 
-HOME  = {"pt":"/","en":"/en/","es":"/es/"}
-PATHS = {"pt":"/rudimentos/","en":"/en/rudiments/","es":"/es/rudimentos/"}
-MET   = {"pt":"/metronomo/","en":"/en/metronome/","es":"/es/metronomo/"}
+HOME  = {"en":"/","pt":"/pt/","es":"/es/"}
+PATHS = {"en":"/rudiments/","pt":"/pt/rudimentos/","es":"/es/rudimentos/"}
+MET   = {"en":"/metronome/","pt":"/pt/metronomo/","es":"/es/metronomo/"}
 
 def esc(s): return s.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;").replace('"',"&quot;")
 
@@ -921,8 +921,10 @@ def render(code):
         fab=fab(code), heart=heart(code))
 
 def write(rel, text):
-    if ANALYTICS_TAG and rel.endswith("index.html"):
-        text = text.replace("</head>", ANALYTICS_TAG + "</head>", 1)
+    if rel.endswith("index.html"):
+        if ANALYTICS_TAG:
+            text = text.replace("</head>", ANALYTICS_TAG + "</head>", 1)
+        text = text.replace("</body>", '<script src="/lang.js" defer></script>\n</body>', 1)
     p = os.path.join(OUT, rel)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8").write(text)
@@ -982,6 +984,12 @@ def main():
     made.append(write("vercel.json", json.dumps({
         "cleanUrls": True,
         "trailingSlash": True,
+        "redirects": [
+            {"source": "/en", "destination": "/", "permanent": True},
+            {"source": "/en/:path*", "destination": "/:path*", "permanent": True},
+            {"source": "/rudimentos", "destination": "/pt/rudimentos", "permanent": True},
+            {"source": "/metronomo", "destination": "/pt/metronomo", "permanent": True},
+            {"source": "/apoiar", "destination": "/pt/apoiar", "permanent": True}],
         "headers": [
             {"source":"/(.*)","headers":[
                 {"key":"X-Content-Type-Options","value":"nosniff"},

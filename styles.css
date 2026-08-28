@@ -306,3 +306,13 @@ body.is-playing .fab.show,body.is-playing .fabx.show{opacity:0;pointer-events:no
   .choice{flex-direction:column;align-items:flex-start;gap:12px;padding:18px}
   .choice .glyph{width:56px;height:56px}
 }
+
+/* faixa que sugere a versao no idioma do navegador */
+.langhint{max-width:1000px;margin:0 auto 12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  background:var(--surface);border:1.5px solid var(--line-2);border-radius:var(--radius);
+  padding:12px 14px;font-size:14.5px;color:var(--ink-2);box-shadow:var(--shadow)}
+.langhint span{flex:1;min-width:180px}
+.langhint .lhgo{color:var(--ink);font-weight:500;text-decoration:none;border-bottom:1.5px solid var(--red);padding-bottom:1px}
+.langhint .lhx{flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line-2);
+  color:var(--ink-3);font-size:17px;line-height:1;display:grid;place-items:center}
+.langhint .lhx:hover{color:var(--ink)}

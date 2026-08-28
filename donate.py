@@ -13,7 +13,7 @@ DONATE = {
     "stripe":   "",          # link de pagamento avulso do Stripe
 }
 
-PATHS = {"pt": "/apoiar/", "en": "/en/support/", "es": "/es/apoyar/"}
+PATHS = {"en": "/support/", "pt": "/pt/apoiar/", "es": "/es/apoyar/"}
 
 COPY = {
 "pt": {

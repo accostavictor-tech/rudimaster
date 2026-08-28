@@ -6,7 +6,7 @@
 <title>Metrónomo online gratis — acentos, subdivisiones y tap tempo | RudiMaster</title>
 <meta name="description" content="Metrónomo online preciso, con acento o silencio en cada tiempo, subdivisión en corcheas, tresillos y semicorcheas, tap tempo y aceleración progresiva. Gratuito y sin registro." />
 <link rel="canonical" href="https://rudimaster.com/es/metronomo/" />
-<link rel="alternate" hreflang="pt" href="https://rudimaster.com/metronomo/" /><link rel="alternate" hreflang="en" href="https://rudimaster.com/en/metronome/" /><link rel="alternate" hreflang="es" href="https://rudimaster.com/es/metronomo/" /><link rel="alternate" hreflang="x-default" href="https://rudimaster.com/en/metronome/" />
+<link rel="alternate" hreflang="en" href="https://rudimaster.com/metronome/" /><link rel="alternate" hreflang="pt" href="https://rudimaster.com/pt/metronomo/" /><link rel="alternate" hreflang="es" href="https://rudimaster.com/es/metronomo/" /><link rel="alternate" hreflang="x-default" href="https://rudimaster.com/metronome/" />
 <meta name="theme-color" content="#E7DFCC" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="RudiMaster" />
@@ -44,7 +44,7 @@
     </a>
     <div class="tools">
       <a class="chip heart" href="/es/apoyar/" aria-label="Apoyar el proyecto" title="Apoyar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.2-4.5-7.2-9.2a4 4 0 0 1 7.2-2.5 4 4 0 0 1 7.2 2.5c0 4.7-7.2 9.2-7.2 9.2z"/></svg></a><button class="chip" id="langBtn" aria-haspopup="true" aria-label="Español">ES</button>
-      <nav class="langmenu" id="langMenu"><a href="/metronomo/" hreflang="pt-BR" aria-current="false">Português</a><a href="/en/metronome/" hreflang="en" aria-current="false">English</a><a href="/es/metronomo/" hreflang="es" aria-current="true">Español</a></nav>
+      <nav class="langmenu" id="langMenu"><a href="/metronome/" hreflang="en" aria-current="false">English</a><a href="/pt/metronomo/" hreflang="pt-BR" aria-current="false">Português</a><a href="/es/metronomo/" hreflang="es" aria-current="true">Español</a></nav>
       <button class="chip" id="theme" aria-label="Cambiar tema">&#9681;</button>
     </div>
   </div>
@@ -126,11 +126,12 @@
 
 <footer class="sitefoot">
   <span><a href="/es/apoyar/"><strong>Apoyar</strong></a> &middot; <a href="/es/">Inicio</a></span>
-  <span><a href="/metronomo/" hreflang="pt-BR">Português</a> &middot; <a href="/en/metronome/" hreflang="en">English</a></span>
+  <span><a href="/metronome/" hreflang="en">English</a> &middot; <a href="/pt/metronomo/" hreflang="pt-BR">Português</a></span>
 </footer>
 
 <a class="fab" id="fab" href="/es/apoyar/" aria-label="Apoyar el proyecto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.7-7.5-9.6a4.2 4.2 0 0 1 7.5-2.6 4.2 4.2 0 0 1 7.5 2.6c0 4.9-7.5 9.6-7.5 9.6z"/></svg><span>Apoyar</span></a><button class="fabx" id="fabx" aria-label="Ocultar">&times;</button><script>(function(){var f=document.getElementById("fab"),x=document.getElementById("fabx");try{var t=Number(localStorage.getItem("rudi-fab")||0);if(Date.now()-t<2592000000){f.remove();x.remove();return;}}catch(e){}setTimeout(function(){f.classList.add("show");x.classList.add("show");},60000);x.addEventListener("click",function(){f.remove();x.remove();try{localStorage.setItem("rudi-fab",String(Date.now()));}catch(e){}});})();</script>
 <script src="/i18n.js"></script>
 <script src="/metronome.js" defer></script>
+<script src="/lang.js" defer></script>
 </body>
 </html>
