@@ -9,12 +9,13 @@ OUT = os.path.dirname(os.path.abspath(__file__))
 # Analytics. Vercel Web Analytics e sem cookie e nao exige banner de consentimento.
 # Precisa estar habilitado em Settings > Analytics no painel do projeto.
 VERCEL_ANALYTICS = True
-VERCEL_SPEED_INSIGHTS = False
+VERCEL_SPEED_INSIGHTS = True
 
 ANALYTICS_TAG = ""
 if VERCEL_ANALYTICS:
     ANALYTICS_TAG += '<script defer src="/_vercel/insights/script.js"></script>\n'
 if VERCEL_SPEED_INSIGHTS:
+    ANALYTICS_TAG += '<script>\n  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };\n</script>\n'
     ANALYTICS_TAG += '<script defer src="/_vercel/speed-insights/script.js"></script>\n'
 
 
@@ -943,12 +944,13 @@ def main():
     for code, dpath in DN.PATHS.items():
         made.append(write(dpath.strip("/") + "/index.html", render_donate(code)))
 
-    if DN.DONATE["pix_key"]:
-        payload = DN.pix_payload(DN.DONATE["pix_key"], DN.DONATE["pix_name"], DN.DONATE["pix_city"])
-        DN.write_pix_qr(os.path.join(OUT, "pix-qr.png"), payload)
-        made.append("pix-qr.png")
-    else:
-        print("aviso: chave Pix vazia em donate.py, o bloco de Pix nao aparece na pagina")
+    # Temporarily disabled pix QR generation (requires segno module)
+    # if DN.DONATE["pix_key"]:
+    #     payload = DN.pix_payload(DN.DONATE["pix_key"], DN.DONATE["pix_name"], DN.DONATE["pix_city"])
+    #     DN.write_pix_qr(os.path.join(OUT, "pix-qr.png"), payload)
+    #     made.append("pix-qr.png")
+    # else:
+    #     print("aviso: chave Pix vazia em donate.py, o bloco de Pix nao aparece na pagina")
     if not (DN.DONATE["kofi"] or DN.DONATE["stripe"]):
         print("aviso: nenhum link de cartao configurado em donate.py")
     if not DN.DONATE["paypal"]:
