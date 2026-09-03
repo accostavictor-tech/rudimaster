@@ -95,7 +95,7 @@ Sugestão de conta para receber cartão internacional: o Ko-fi não cobra taxa s
 
 ## Para editar
 
-Rudimentos ficam em `app.js`, no array `RUDIMENTS`. Cada nota é `{s, d, a, g}`: mão (`R` ou `L`), duração em tempos (0.25 é semicolcheia, 1/6 é sextina), acento e ornamento (1 é flam, 2 é drag). Ao adicionar um rudimento, inclua o nome nos três idiomas em `build.py`, dentro de `UI[lang]["names"]`, e o sticking em `PATTERNS`, depois rode `python3 build.py`.
+Os 40 rudimentos da PAS ficam em `app.js`, no array `RUDIMENTS`, na ordem oficial e com o número em `n`. Cada nota é `{s, d, a, g}`: mão (`R` ou `L`), duração em tempos (0.25 é semicolcheia, 1/3 é tercina, 1/6 é sextina), acento e ornamento (1 é flam, 2 é drag, 3 é buzz). Feixes e números de quiáltera são calculados no `compile()`, inclusive tercinas mistas como a do flam drag. Ao adicionar um rudimento, inclua o nome nos três idiomas em `build.py`, dentro de `UI[lang]["names"]`, e o sticking em `PATTERNS`, depois rode `python3 build.py`.
 
 Textos de interface e conteúdo de SEO também ficam em `build.py`, nos dicionários `UI` e `SEO`. O `build.py` é a única fonte de verdade: ele escreve o `i18n.js` consumido pelo navegador.
 

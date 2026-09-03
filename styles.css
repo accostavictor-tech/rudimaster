@@ -316,3 +316,13 @@ body.is-playing .fab.show,body.is-playing .fabx.show{opacity:0;pointer-events:no
 .langhint .lhx{flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line-2);
   color:var(--ink-3);font-size:17px;line-height:1;display:grid;place-items:center}
 .langhint .lhx:hover{color:var(--ink)}
+
+/* compartilhar */
+.share{display:flex;align-items:center;flex-wrap:wrap;gap:8px;justify-content:center;margin:4px 0 2px}
+.sharelab{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-right:4px}
+.sharebtn{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 15px;border-radius:999px;
+  border:1.5px solid var(--line-2);font-size:13.5px;font-weight:500;color:var(--ink);text-decoration:none;background:none}
+.sharebtn:hover{background:var(--sunk)} .sharebtn:active{transform:scale(.97)}
+.sharebtn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.page .share{justify-content:flex-start;margin-top:18px}
+.home .share{margin:-16px 0 34px}

@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
 <link rel="stylesheet" href="/styles.css" />
 <script>try{var t=localStorage.getItem('rudi-theme');if(t){document.documentElement.dataset.theme=t;if(t==='night')document.querySelector('meta[name=theme-color]').content='#121110';}}catch(e){}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "RudiMaster", "url": "https://rudimaster.com/pt/metronomo/", "description": "Metrônomo online preciso, com acento ou silêncio em cada tempo, subdivisão em colcheias, tercinas e semicolcheias, tap tempo e aceleração progressiva. Gratuito e sem cadastro.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any", "inLanguage": "pt-BR", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "featureList": ["Rufo simples", "Rufo duplo", "Rufo triplo", "Rufo de 5 toques", "Rufo de 6 toques", "Rufo de 7 toques", "Rufo de 9 toques", "Paradiddle simples", "Paradiddle duplo", "Paradiddle triplo", "Paradiddle-diddle", "Flam", "Flam tap", "Flam accent", "Flamacue", "Drag", "Drag tap simples", "Ratamacue simples"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "RudiMaster", "url": "https://rudimaster.com/pt/metronomo/", "description": "Metrônomo online preciso, com acento ou silêncio em cada tempo, subdivisão em colcheias, tercinas e semicolcheias, tap tempo e aceleração progressiva. Gratuito e sem cadastro.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any", "inLanguage": "pt-BR", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "featureList": ["Rufo simples", "Rufo simples de quatro", "Rufo simples de sete", "Rufo pressionado (buzz roll)", "Rufo triplo", "Rufo duplo", "Rufo de 5 toques", "Rufo de 6 toques", "Rufo de 7 toques", "Rufo de 9 toques", "Rufo de 10 toques", "Rufo de 11 toques", "Rufo de 13 toques", "Rufo de 15 toques", "Rufo de 17 toques", "Paradiddle simples", "Paradiddle duplo", "Paradiddle triplo", "Paradiddle-diddle", "Flam", "Flam accent", "Flam tap", "Flamacue", "Flam paradiddle", "Single flammed mill", "Flam paradiddle-diddle", "Pataflafla", "Swiss army triplet", "Flam tap invertido", "Flam drag", "Drag", "Drag tap simples", "Drag tap duplo", "Lesson 25", "Dragadiddle simples", "Drag paradiddle nº 1", "Drag paradiddle nº 2", "Ratamacue simples", "Ratamacue duplo", "Ratamacue triplo"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O metrônomo funciona offline?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Depois do primeiro carregamento a página funciona sem internet, e dá para instalar na tela inicial do celular."}}, {"@type": "Question", "name": "Por que silenciar alguns tempos?", "acceptedAnswer": {"@type": "Answer", "text": "Tocar com alguns tempos mudos obriga você a sustentar o pulso por conta própria. É um dos exercícios mais eficientes para melhorar tempo interno, e fica evidente quando você desacelera ou acelera sem perceber."}}, {"@type": "Question", "name": "Qual a diferença para o modo rudimentos?", "acceptedAnswer": {"@type": "Answer", "text": "No modo rudimentos, além do clique, a partitura do rudimento escolhido corre na tela e o padrão toca junto, servindo de guia."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -105,6 +105,7 @@
     </div>
   </div>
 
+  <div class="share" id="share" data-text="Metrônomo e treino de rudimentos de bateria, grátis e sem cadastro"><span class="sharelab">Compartilhar</span><button class="sharebtn" data-native hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 14v5h14v-5"/></svg>Compartilhar…</button><a class="sharebtn" data-net="whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a><a class="sharebtn" data-net="x" href="#" target="_blank" rel="noopener">X</a><a class="sharebtn" data-net="reddit" href="#" target="_blank" rel="noopener">Reddit</a></div>
   <p class="modeswitch"><a href="/pt/rudimentos/">Treinar rudimentos &#8594;</a></p>
   <p class="keys"><kbd>espaço</kbd> toca e para · <kbd>↑</kbd><kbd>↓</kbd> muda o bpm</p>
 </div>
@@ -133,5 +134,6 @@
 <script src="/i18n.js"></script>
 <script src="/metronome.js" defer></script>
 <script src="/lang.js" defer></script>
+<script src="/share.js" defer></script>
 </body>
 </html>

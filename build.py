@@ -24,6 +24,7 @@ UI = {
   "home":"Início","toRud":"Treinar rudimentos","toMet":"Só o metrônomo","back":"Início",
   "beatsLab":"Batidas por compasso","subLab":"Subdivisão","subs":["Semínima","Colcheias","Tercinas","Semicolcheias"],
   "lugHint":"Toque nos pontos para acentuar ou silenciar cada tempo","elapsed":"Tempo",
+  "shareRud":"Treinando %s no RudiMaster, metrônomo com partitura animada",
   "html":"pt-BR","label":"Português","tagline":"Prática de rudimentos no pad, com metrônomo e partitura.","rud":"Rudimento","settings":"Ajustes",
   "sig":"Compasso","hand":"Mão que conduz","right":"Direita","left":"Esquerda",
   "sound":"Som e leitura","met":"Metrônomo","rudSnd":"Rudimento","hands":"Mãos","countIn":"Entrada",
@@ -38,12 +39,14 @@ UI = {
   "names":{"s1":"Rufo simples","s2":"Rufo duplo","s3":"Rufo triplo","r5":"Rufo de 5 toques","r6":"Rufo de 6 toques",
     "r7":"Rufo de 7 toques","r9":"Rufo de 9 toques","p1":"Paradiddle simples","p2":"Paradiddle duplo",
     "p3":"Paradiddle triplo","pd":"Paradiddle-diddle","f1":"Flam","f2":"Flam tap","f3":"Flam accent",
-    "f4":"Flamacue","d1":"Drag","d2":"Drag tap simples","d3":"Ratamacue simples"}
+    "f4":"Flamacue","d1":"Drag","d2":"Drag tap simples","d3":"Ratamacue simples",
+      "s4":"Rufo simples de quatro","s7":"Rufo simples de sete","mb":"Rufo pressionado (buzz roll)","r10":"Rufo de 10 toques","r11":"Rufo de 11 toques","r13":"Rufo de 13 toques","r15":"Rufo de 15 toques","r17":"Rufo de 17 toques","fp":"Flam paradiddle","fm":"Single flammed mill","fpd":"Flam paradiddle-diddle","pf":"Pataflafla","sw":"Swiss army triplet","ift":"Flam tap invertido","fd":"Flam drag","ddt":"Drag tap duplo","l25":"Lesson 25","sdd":"Dragadiddle simples","dp1":"Drag paradiddle nº 1","dp2":"Drag paradiddle nº 2","dr2":"Ratamacue duplo","dr3":"Ratamacue triplo"}
 },
 "en": {
   "home":"Home","toRud":"Practise rudiments","toMet":"Metronome only","back":"Home",
   "beatsLab":"Beats per bar","subLab":"Subdivision","subs":["Quarter","Eighths","Triplets","Sixteenths"],
   "lugHint":"Tap the dots to accent or mute each beat","elapsed":"Elapsed",
+  "shareRud":"Practising the %s on RudiMaster, metronome with scrolling notation",
   "html":"en","label":"English","tagline":"Pad practice for drum rudiments, with metronome and notation.","rud":"Rudiment","settings":"Settings",
   "sig":"Time signature","hand":"Leading hand","right":"Right","left":"Left",
   "sound":"Sound & reading","met":"Metronome","rudSnd":"Rudiment","hands":"Sticking","countIn":"Count-in",
@@ -58,12 +61,14 @@ UI = {
   "names":{"s1":"Single stroke roll","s2":"Double stroke roll","s3":"Triple stroke roll","r5":"Five stroke roll",
     "r6":"Six stroke roll","r7":"Seven stroke roll","r9":"Nine stroke roll","p1":"Single paradiddle",
     "p2":"Double paradiddle","p3":"Triple paradiddle","pd":"Paradiddle-diddle","f1":"Flam","f2":"Flam tap",
-    "f3":"Flam accent","f4":"Flamacue","d1":"Drag (ruff)","d2":"Single drag tap","d3":"Single ratamacue"}
+    "f3":"Flam accent","f4":"Flamacue","d1":"Drag (ruff)","d2":"Single drag tap","d3":"Single ratamacue",
+      "s4":"Single stroke four","s7":"Single stroke seven","mb":"Multiple bounce roll","r10":"Ten stroke roll","r11":"Eleven stroke roll","r13":"Thirteen stroke roll","r15":"Fifteen stroke roll","r17":"Seventeen stroke roll","fp":"Flam paradiddle","fm":"Single flammed mill","fpd":"Flam paradiddle-diddle","pf":"Pataflafla","sw":"Swiss army triplet","ift":"Inverted flam tap","fd":"Flam drag","ddt":"Double drag tap","l25":"Lesson 25","sdd":"Single dragadiddle","dp1":"Drag paradiddle #1","dp2":"Drag paradiddle #2","dr2":"Double ratamacue","dr3":"Triple ratamacue"}
 },
 "es": {
   "home":"Inicio","toRud":"Practicar rudimentos","toMet":"Solo el metrónomo","back":"Inicio",
   "beatsLab":"Tiempos por compás","subLab":"Subdivisión","subs":["Negra","Corcheas","Tresillos","Semicorcheas"],
   "lugHint":"Toca los puntos para acentuar o silenciar cada tiempo","elapsed":"Tiempo",
+  "shareRud":"Practicando %s en RudiMaster, metrónomo con partitura animada",
   "html":"es","label":"Español","tagline":"Práctica de rudimentos en el pad, con metrónomo y partitura.","rud":"Rudimento","settings":"Ajustes",
   "sig":"Compás","hand":"Mano que conduce","right":"Derecha","left":"Izquierda",
   "sound":"Sonido y lectura","met":"Metrónomo","rudSnd":"Rudimento","hands":"Manos","countIn":"Entrada",
@@ -78,7 +83,8 @@ UI = {
   "names":{"s1":"Redoble simple","s2":"Redoble doble","s3":"Redoble triple","r5":"Redoble de 5 golpes",
     "r6":"Redoble de 6 golpes","r7":"Redoble de 7 golpes","r9":"Redoble de 9 golpes","p1":"Paradiddle simple",
     "p2":"Paradiddle doble","p3":"Paradiddle triple","pd":"Paradiddle-diddle","f1":"Flam","f2":"Flam tap",
-    "f3":"Flam accent","f4":"Flamacue","d1":"Drag","d2":"Drag tap simple","d3":"Ratamacue simple"}
+    "f3":"Flam accent","f4":"Flamacue","d1":"Drag","d2":"Drag tap simple","d3":"Ratamacue simple",
+      "s4":"Redoble simple de cuatro","s7":"Redoble simple de siete","mb":"Redoble de presión (buzz roll)","r10":"Redoble de 10 golpes","r11":"Redoble de 11 golpes","r13":"Redoble de 13 golpes","r15":"Redoble de 15 golpes","r17":"Redoble de 17 golpes","fp":"Flam paradiddle","fm":"Single flammed mill","fpd":"Flam paradiddle-diddle","pf":"Pataflafla","sw":"Swiss army triplet","ift":"Flam tap invertido","fd":"Flam drag","ddt":"Drag tap doble","l25":"Lesson 25","sdd":"Dragadiddle simple","dp1":"Drag paradiddle n.º 1","dp2":"Drag paradiddle n.º 2","dr2":"Ratamacue doble","dr3":"Ratamacue triple"}
 }}
 
 SEO = {
@@ -92,8 +98,8 @@ SEO = {
            "Defina o compasso e o andamento. Se não souber a velocidade, use o tap tempo batendo o pulso que tem na cabeça.",
            "Dê play. Um compasso de entrada toca antes do rudimento começar.",
            "Quando o padrão estiver na mão, ligue o treino progressivo e deixe o andamento subir sozinho a cada tantos compassos."],
-  "listTitle":"Rudimentos disponíveis",
-  "listIntro":"Dezoito rudimentos com sticking, acentos, flams e drags escritos em notação real. As letras D e E indicam a mão direita e a esquerda, e podem ser invertidas para canhotos.",
+  "listTitle":"Os 40 rudimentos",
+  "listIntro":"Os 40 rudimentos internacionais da Percussive Arts Society, na ordem oficial, com sticking, acentos, flams e drags escritos em notação real. As letras D e E indicam a mão direita e a esquerda, e podem ser invertidas para canhotos.",
   "faqTitle":"Perguntas frequentes",
   "faq":[
     ("O que são rudimentos de bateria?","São os padrões básicos de baqueta que formam o vocabulário do baterista, como o rufo duplo, o paradiddle e o flam. Combinando esses blocos você constrói viradas, levadas e solos. Treinar rudimento é o equivalente a estudar escala em um instrumento harmônico."),
@@ -113,8 +119,8 @@ SEO = {
            "Set the time signature and tempo. If you don't know the speed, tap the pulse you have in mind on the tap tempo button.",
            "Hit play. One count-in bar runs before the rudiment starts.",
            "Once the pattern feels comfortable, turn on progressive practice and let the tempo climb on its own every few bars."],
-  "listTitle":"Rudiments included",
-  "listIntro":"Eighteen rudiments with sticking, accents, flams and drags written in real notation. R and L mark the right and left hand, and can be swapped for left-handed players.",
+  "listTitle":"The 40 rudiments",
+  "listIntro":"All 40 Percussive Arts Society international rudiments, in official order, with sticking, accents, flams and drags written in real notation. R and L mark the right and left hand, and can be swapped for left-handed players.",
   "faqTitle":"Frequently asked questions",
   "faq":[
     ("What are drum rudiments?","They are the basic sticking patterns that make up a drummer's vocabulary, such as the double stroke roll, the paradiddle and the flam. Combining these blocks is how fills, grooves and solos get built. Practising rudiments is the drummer's equivalent of practising scales."),
@@ -134,8 +140,8 @@ SEO = {
            "Define el compás y el tempo. Si no sabes la velocidad, usa el tap tempo golpeando el pulso que tienes en la cabeza.",
            "Dale a tocar. Suena un compás de entrada antes de que empiece el rudimento.",
            "Cuando el patrón salga cómodo, activa la práctica progresiva y deja que el tempo suba solo cada cierto número de compases."],
-  "listTitle":"Rudimentos incluidos",
-  "listIntro":"Dieciocho rudimentos con sticking, acentos, flams y drags escritos en notación real. Las letras D e I indican la mano derecha y la izquierda, y se pueden invertir para zurdos.",
+  "listTitle":"Los 40 rudimentos",
+  "listIntro":"Los 40 rudimentos internacionales de la Percussive Arts Society, en orden oficial, con sticking, acentos, flams y drags escritos en notación real. Las letras D e I indican la mano derecha y la izquierda, y se pueden invertir para zurdos.",
   "faqTitle":"Preguntas frecuentes",
   "faq":[
     ("¿Qué son los rudimentos de batería?","Son los patrones básicos de baqueta que forman el vocabulario del baterista, como el redoble doble, el paradiddle y el flam. Combinando estos bloques se construyen fills, grooves y solos. Practicar rudimentos equivale a estudiar escalas en un instrumento armónico."),
@@ -153,7 +159,7 @@ HOME_SEO = {
   "h1":"Comece por aqui",
   "lead":"Duas ferramentas para estudar no pad ou na caixa.",
   "metTitle":"Metrônomo","metDesc":"Andamento, acentos por tempo e subdivisões. Com tap tempo e aceleração automática.",
-  "rudTitle":"Rudimentos","rudDesc":"Dezoito rudimentos com a partitura correndo na tela e o metrônomo tocando junto.",
+  "rudTitle":"Rudimentos","rudDesc":"Os 40 rudimentos da PAS com a partitura correndo na tela e o metrônomo tocando junto.",
   "cta":"Abrir",
   "aboutTitle":"Sobre o RudiMaster",
   "about":"O RudiMaster nasceu de um problema simples: o metrônomo fica num app, a folha de rudimento fica noutro, e o estudo se perde entre os dois. Aqui as duas coisas moram no mesmo lugar, funcionam no celular e não pedem login. O relógio do áudio é o mesmo que move a partitura, então som e imagem nunca saem de sincronia."
@@ -164,7 +170,7 @@ HOME_SEO = {
   "h1":"Start here",
   "lead":"Two tools for practising on a pad or a snare drum.",
   "metTitle":"Metronome","metDesc":"Tempo, per-beat accents and subdivisions. With tap tempo and automatic speed-up.",
-  "rudTitle":"Rudiments","rudDesc":"Eighteen rudiments with notation scrolling across the screen and the metronome playing along.",
+  "rudTitle":"Rudiments","rudDesc":"All 40 PAS rudiments with notation scrolling across the screen and the metronome playing along.",
   "cta":"Open",
   "aboutTitle":"About RudiMaster",
   "about":"RudiMaster started from a simple problem: the metronome lives in one app, the rudiment sheet in another, and practice gets lost between the two. Here both sit in the same place, work on a phone and ask for no login. The audio clock that fires the click is the same one that moves the notation, so sound and image never drift apart."
@@ -175,7 +181,7 @@ HOME_SEO = {
   "h1":"Empieza por aquí",
   "lead":"Dos herramientas para practicar en el pad o en la caja.",
   "metTitle":"Metrónomo","metDesc":"Tempo, acentos por tiempo y subdivisiones. Con tap tempo y aceleración automática.",
-  "rudTitle":"Rudimentos","rudDesc":"Dieciocho rudimentos con la partitura corriendo en la pantalla y el metrónomo sonando a la vez.",
+  "rudTitle":"Rudimentos","rudDesc":"Los 40 rudimentos de la PAS con la partitura corriendo en la pantalla y el metrónomo sonando a la vez.",
   "cta":"Abrir",
   "aboutTitle":"Sobre RudiMaster",
   "about":"RudiMaster nació de un problema simple: el metrónomo está en una app, la hoja de rudimentos en otra, y el estudio se pierde entre las dos. Aquí ambas cosas viven en el mismo sitio, funcionan en el móvil y no piden registro. El reloj de audio que dispara el clic es el mismo que mueve la partitura, así que sonido e imagen nunca se separan."
@@ -238,12 +244,22 @@ MET_SEO = {
 }}
 
 PATTERNS = {
- "s1":"RLRLRLRL","s2":"RRLLRRLL","s3":"RRRLLLRRRLLL","r5":"RRLLR LLRRL","r6":"RLLRRL LRRLLR",
- "r7":"RRLLRRL LLRRLLR","r9":"RRLLRRLLR LLRRLLRRL","p1":"RLRR LRLL","p2":"RLRLRR LRLRLL",
- "p3":"RLRLRLRR LRLRLRLL","pd":"RLRRLL RLRRLL","f1":"RLRL","f2":"RRLL","f3":"RLRLRL",
- "f4":"RLRLR LRLRL","d1":"RLRL","d2":"RLLR","d3":"RLRL LRLR"}
-CATS = {"roll":["s1","s2","s3","r5","r6","r7","r9"],"para":["p1","p2","p3","pd"],
-        "flam":["f1","f2","f3","f4"],"drag":["d1","d2","d3"]}
+ "s1":"RLRLRLRL","s4":"RLRL LRLR","s7":"RLRLRLR LRLRLRL","mb":"RLRL","s3":"RRRLLLRRRLLL","s2":"RRLLRRLL",
+ "r5":"RRLLR LLRRL","r6":"RLLRRL LRRLLR","r7":"RRLLRRL LLRRLLR","r9":"RRLLRRLLR LLRRLLRRL",
+ "r10":"RRLLRRLLRL LLRRLLRRLR","r11":"RRLLRRLLRRL LLRRLLRRLLR","r13":"RRLLRRLLRRLLR LLRRLLRRLLRRL",
+ "r15":"RRLLRRLLRRLLRRL LLRRLLRRLLRRLLR","r17":"RRLLRRLLRRLLRRLLR LLRRLLRRLLRRLLRRL",
+ "p1":"RLRR LRLL","p2":"RLRLRR LRLRLL","p3":"RLRLRLRR LRLRLRLL","pd":"RLRRLL RLRRLL",
+ "f1":"RLRL","f3":"RLRLRL","f2":"RRLL","f4":"RLRLR LRLRL","fp":"RLRR LRLL","fm":"RRLR LLRL","fpd":"RLRRLL LRLLRR",
+ "pf":"RLRL RLRL","sw":"RRL RRL","ift":"RLLR","fd":"RLLR LRRL",
+ "d1":"RLRL","d2":"RLLR","ddt":"RRL LLR","l25":"RLR LRL","sdd":"RLRR LRLL","dp1":"RRLRR LLRLL","dp2":"RRRLRR LLLRLL",
+ "d3":"RLRL LRLR","dr2":"RRLRL LLRLR","dr3":"RRRLRL LLLRLR"}
+PAS_NUM = {"s1":1,"s4":2,"s7":3,"mb":4,"s3":5,"s2":6,"r5":7,"r6":8,"r7":9,"r9":10,"r10":11,"r11":12,"r13":13,"r15":14,"r17":15,
+ "p1":16,"p2":17,"p3":18,"pd":19,"f1":20,"f3":21,"f2":22,"f4":23,"fp":24,"fm":25,"fpd":26,"pf":27,"sw":28,"ift":29,"fd":30,
+ "d1":31,"d2":32,"ddt":33,"l25":34,"sdd":35,"dp1":36,"dp2":37,"d3":38,"dr2":39,"dr3":40}
+CATS = {"roll":["s1","s4","s7","mb","s3","s2","r5","r6","r7","r9","r10","r11","r13","r15","r17"],
+        "para":["p1","p2","p3","pd"],
+        "flam":["f1","f3","f2","f4","fp","fm","fpd","pf","sw","ift","fd"],
+        "drag":["d1","d2","ddt","l25","sdd","dp1","dp2","d3","dr2","dr3"]}
 
 HOME  = {"en":"/","pt":"/pt/","es":"/es/"}
 PATHS = {"en":"/rudiments/","pt":"/pt/rudimentos/","es":"/es/rudimentos/"}
@@ -258,7 +274,7 @@ def rud_lists(code):
     ui = UI[code]; out = []
     for cat, ids in CATS.items():
         items = "".join(
-            '<li><b>%s</b><code>%s</code></li>' % (esc(ui["names"][i]), sticking(i, ui["letters"]))
+            '<li><b>%d. %s</b><code>%s</code></li>' % (PAS_NUM[i], esc(ui["names"][i]), sticking(i, ui["letters"]))
             for i in ids)
         out.append('<div class="fam"><h3>%s</h3><ul class="rudlist">%s</ul></div>' % (esc(ui["cats"][cat]), items))
     return "".join(out)
@@ -294,6 +310,28 @@ def heart(code):
             '<svg viewBox="0 0 24 24" aria-hidden="true">'
             '<path d="M12 20.3s-7.2-4.5-7.2-9.2a4 4 0 0 1 7.2-2.5 4 4 0 0 1 7.2 2.5c0 4.7-7.2 9.2-7.2 9.2z"/>'
             '</svg></a>' % (DN.PATHS[code], esc(FAB_LABEL[code]), esc(DN.NAV[code])))
+
+
+SHARE_TXT = {
+  "pt": {"lab":"Compartilhar","native":"Compartilhar…",
+         "text":"Metrônomo e treino de rudimentos de bateria, grátis e sem cadastro"},
+  "en": {"lab":"Share","native":"Share…",
+         "text":"Free metronome and drum rudiment trainer, no sign-up"},
+  "es": {"lab":"Compartir","native":"Compartir…",
+         "text":"Metrónomo y práctica de rudimentos de batería, gratis y sin registro"},
+}
+
+
+def share(code):
+    t = SHARE_TXT[code]
+    return ('<div class="share" id="share" data-text="%s">'
+            '<span class="sharelab">%s</span>'
+            '<button class="sharebtn" data-native hidden>'
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 14v5h14v-5"/></svg>%s</button>'
+            '<a class="sharebtn" data-net="whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>'
+            '<a class="sharebtn" data-net="x" href="#" target="_blank" rel="noopener">X</a>'
+            '<a class="sharebtn" data-net="reddit" href="#" target="_blank" rel="noopener">Reddit</a>'
+            '</div>' % (esc(t["text"]), esc(t["lab"]), esc(t["native"])))
 
 
 def fab(code):
@@ -439,6 +477,7 @@ TEMPLATE = """<!DOCTYPE html>
     </div>
   </details>
 
+  {share}
   <p class="modeswitch"><a href="{metpath}">{tomet} &#8594;</a></p>
   <p class="keys">{keys}</p>
 </div>
@@ -545,6 +584,7 @@ DONATE_TEMPLATE = """<!DOCTYPE html>
   <section>
     <h2>{freeTitle}</h2>
     <ul class="ticks">{free}</ul>
+    {share}
   </section>
 
   <p class="thanks">{thanks}</p>
@@ -626,7 +666,7 @@ def render_donate(code):
         whatTitle=esc(c["whatTitle"]), what="".join("<li>%s</li>" % esc(x) for x in c["what"]),
         howTitle=esc(c["howTitle"]), options=donate_options(code),
         freeTitle=esc(c["freeTitle"]), free="".join("<li>%s</li>" % esc(x) for x in c["free"]),
-        thanks=esc(c["thanks"]), back=esc(c["back"]), footlinks=footlinks, heart="")
+        thanks=esc(c["thanks"]), back=esc(c["back"]), footlinks=footlinks, heart="", share=share(code))
 
 HEAD_COMMON = """<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
@@ -706,6 +746,8 @@ HOME_TEMPLATE = """<!DOCTYPE html>
       </span>
     </a>
   </div>
+
+  {share}
 
   <section>
     <h2>{aboutTitle}</h2>
@@ -816,6 +858,7 @@ MET_TEMPLATE = """<!DOCTYPE html>
     </div>
   </div>
 
+  {share}
   <p class="modeswitch"><a href="{rudpath}">{torud} &#8594;</a></p>
   <p class="keys">{keys}</p>
 </div>
@@ -866,7 +909,7 @@ def render_home(code):
         metTitle=esc(s["metTitle"]), metDesc=esc(s["metDesc"]),
         rudTitle=esc(s["rudTitle"]), rudDesc=esc(s["rudDesc"]), cta=esc(s["cta"]),
         aboutTitle=esc(s["aboutTitle"]), about=esc(s["about"]),
-        donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]), footlinks=footlinks, fab=fab(code), heart=heart(code))
+        donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]), footlinks=footlinks, fab=fab(code), heart=heart(code), share=share(code))
 
 
 def render_met(code):
@@ -891,7 +934,7 @@ def render_met(code):
         featTitle=esc(s["featTitle"]), feats="".join("<li>%s</li>" % esc(x) for x in s["feats"]),
         faqTitle=esc(s["faqTitle"]),
         faq="".join('<details><summary>%s</summary><p>%s</p></details>' % (esc(q), esc(a)) for q, a in s["faq"]),
-        donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]), footlinks=footlinks, fab=fab(code), heart=heart(code))
+        donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]), footlinks=footlinks, fab=fab(code), heart=heart(code), share=share(code))
 
 
 def render(code):
@@ -918,13 +961,13 @@ def render(code):
         faqTitle=esc(s["faqTitle"]), faq=faq, footNote=esc(s["footNote"]), footlinks=footlinks,
         donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]),
         homepath=HOME[code], homelab=esc(ui["home"]), metpath=MET[code], tomet=esc(ui["toMet"]),
-        fab=fab(code), heart=heart(code))
+        fab=fab(code), heart=heart(code), share=share(code))
 
 def write(rel, text):
     if rel.endswith("index.html"):
         if ANALYTICS_TAG:
             text = text.replace("</head>", ANALYTICS_TAG + "</head>", 1)
-        text = text.replace("</body>", '<script src="/lang.js" defer></script>\n</body>', 1)
+        text = text.replace("</body>", '<script src="/lang.js" defer></script>\n<script src="/share.js" defer></script>\n</body>', 1)
     p = os.path.join(OUT, rel)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8").write(text)

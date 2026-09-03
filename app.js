@@ -18,25 +18,56 @@ var R5 = [.25,.25,.25,.25,.5,.25,.25,.25,.25,.5];
 var R7 = [.25,.25,.25,.25,.25,.25,.5,.25,.25,.25,.25,.25,.25,.5];
 var R9 = [.25,.25,.25,.25,.25,.25,.25,.25,.5,.25,.25,.25,.25,.25,.25,.25,.25,.5];
 
+var R10 = [.25,.25,.25,.25,.25,.25,.25,.25,.5,.5, .25,.25,.25,.25,.25,.25,.25,.25,.5,.5];
+function roll(n){ var d=[]; for (var i=0;i<n-1;i++) d.push(.25); d.push(.5); return d.concat(d); }
+function rollSt(n){ var a='', h='R'; for (var i=0;i<n-1;i++){ a+=h; if (i%2===1) h = h==='R'?'L':'R'; } a+=h; var b=a.replace(/[RL]/g,function(c){return c==='R'?'L':'R';}); return a+' '+b; }
+
+// Ordem e notacao conforme a folha oficial da Percussive Arts Society (40 International Drum Rudiments)
 var RUDIMENTS = window.RUDIMENT_PATTERNS = [
-  { id:'s1', cat:'roll', notes: build('RLRLRLRL', .25) },
-  { id:'s2', cat:'roll', notes: build('RRLLRRLL', .25) },
-  { id:'s3', cat:'roll', notes: build('RRRLLLRRRLLL', T6) },
-  { id:'r5', cat:'roll', notes: build('RRLLR LLRRL', R5, [4,9]) },
-  { id:'r6', cat:'roll', notes: build('RLLRRL LRRLLR', T6, [0,5,6,11]) },
-  { id:'r7', cat:'roll', notes: build('RRLLRRL LLRRLLR', R7, [6,13]) },
-  { id:'r9', cat:'roll', notes: build('RRLLRRLLR LLRRLLRRL', R9, [8,17]) },
-  { id:'p1', cat:'para', notes: build('RLRR LRLL', .25, [0,4]) },
-  { id:'p2', cat:'para', notes: build('RLRLRR LRLRLL', T6, [0,6]) },
-  { id:'p3', cat:'para', notes: build('RLRLRLRR LRLRLRLL', .25, [0,8]) },
-  { id:'pd', cat:'para', notes: build('RLRRLL RLRRLL', T6, [0,6]) },
-  { id:'f1', cat:'flam', notes: build('RLRL', 1, [], {0:1,1:1,2:1,3:1}) },
-  { id:'f2', cat:'flam', notes: build('RRLL', .5, [0,2], {0:1,2:1}) },
-  { id:'f3', cat:'flam', notes: build('RLRLRL', T3, [0,3], {0:1,3:1}) },
-  { id:'f4', cat:'flam', notes: build('RLRLR LRLRL', R5, [1,6], {0:1,4:1,5:1,9:1}) },
-  { id:'d1', cat:'drag', notes: build('RLRL', 1, [], {0:2,1:2,2:2,3:2}) },
-  { id:'d2', cat:'drag', notes: build('RLLR', .5, [1,3], {0:2,2:2}) },
-  { id:'d3', cat:'drag', notes: build('RLRL LRLR', [T6,T6,T6,.5, T6,T6,T6,.5], [3,7], {0:2,4:2}) }
+  // I. Rufos
+  { id:'s1',  n:1,  cat:'roll', notes: build('RLRLRLRL', .25) },
+  { id:'s4',  n:2,  cat:'roll', notes: build('RLRL LRLR', [T6,T6,T6,.5, T6,T6,T6,.5]) },
+  { id:'s7',  n:3,  cat:'roll', notes: build('RLRLRLR LRLRLRL', [T6,T6,T6,T6,T6,T6,.5, T6,T6,T6,T6,T6,T6,.5]) },
+  { id:'mb',  n:4,  cat:'roll', notes: build('RLRL', 1, [], {0:3,1:3,2:3,3:3}) },
+  { id:'s3',  n:5,  cat:'roll', notes: build('RRRLLLRRRLLL', T6) },
+  { id:'s2',  n:6,  cat:'roll', notes: build('RRLLRRLL', .25) },
+  { id:'r5',  n:7,  cat:'roll', notes: build(rollSt(5), roll(5), [4,9]) },
+  { id:'r6',  n:8,  cat:'roll', notes: build('RLLRRL LRRLLR', T6, [0,5,6,11]) },
+  { id:'r7',  n:9,  cat:'roll', notes: build(rollSt(7), roll(7), [6,13]) },
+  { id:'r9',  n:10, cat:'roll', notes: build(rollSt(9), roll(9), [8,17]) },
+  { id:'r10', n:11, cat:'roll', notes: build('RRLLRRLLRL LLRRLLRRLR', R10, [8,9,18,19]) },
+  { id:'r11', n:12, cat:'roll', notes: build(rollSt(11), roll(11), [10,21]) },
+  { id:'r13', n:13, cat:'roll', notes: build(rollSt(13), roll(13), [12,25]) },
+  { id:'r15', n:14, cat:'roll', notes: build(rollSt(15), roll(15), [14,29]) },
+  { id:'r17', n:15, cat:'roll', notes: build(rollSt(17), roll(17), [16,33]) },
+  // II. Diddles
+  { id:'p1',  n:16, cat:'para', notes: build('RLRR LRLL', .25, [0,4]) },
+  { id:'p2',  n:17, cat:'para', notes: build('RLRLRR LRLRLL', T6, [0,6]) },
+  { id:'p3',  n:18, cat:'para', notes: build('RLRLRLRR LRLRLRLL', .25, [0,8]) },
+  { id:'pd',  n:19, cat:'para', notes: build('RLRRLL RLRRLL', T6, [0,6]) },
+  // III. Flams
+  { id:'f1',  n:20, cat:'flam', notes: build('RLRL', 1, [], {0:1,1:1,2:1,3:1}) },
+  { id:'f3',  n:21, cat:'flam', notes: build('RLRLRL', T3, [0,3], {0:1,3:1}) },
+  { id:'f2',  n:22, cat:'flam', notes: build('RRLL', .5, [0,2], {0:1,2:1}) },
+  { id:'f4',  n:23, cat:'flam', notes: build('RLRLR LRLRL', roll(5), [1,6], {0:1,4:1,5:1,9:1}) },
+  { id:'fp',  n:24, cat:'flam', notes: build('RLRR LRLL', .25, [0,4], {0:1,4:1}) },
+  { id:'fm',  n:25, cat:'flam', notes: build('RRLR LLRL', .25, [0,4], {0:1,4:1}) },
+  { id:'fpd', n:26, cat:'flam', notes: build('RLRRLL LRLLRR', T6, [0,6], {0:1,6:1}) },
+  { id:'pf',  n:27, cat:'flam', notes: build('RLRL RLRL', .25, [0,3,4,7], {0:1,3:1,4:1,7:1}) },
+  { id:'sw',  n:28, cat:'flam', notes: build('RRL RRL', T3, [0,3], {0:1,3:1}) },
+  { id:'ift', n:29, cat:'flam', notes: build('RLLR', .5, [0,2], {0:1,2:1}) },
+  { id:'fd',  n:30, cat:'flam', notes: build('RLLR LRRL', [T3,T6,T6,T3, T3,T6,T6,T3], [0,4], {0:1,4:1}) },
+  // IV. Drags
+  { id:'d1',  n:31, cat:'drag', notes: build('RLRL', 1, [], {0:2,1:2,2:2,3:2}) },
+  { id:'d2',  n:32, cat:'drag', notes: build('RLLR', .5, [1,3], {0:2,2:2}) },
+  { id:'ddt', n:33, cat:'drag', notes: build('RRL LLR', .5, [2,5], {0:2,1:2,3:2,4:2}) },
+  { id:'l25', n:34, cat:'drag', notes: build('RLR LRL', [.25,.25,.5, .25,.25,.5], [2,5], {0:2,3:2}) },
+  { id:'sdd', n:35, cat:'drag', notes: build('RLRR LRLL', .25, [0,4], {0:2,4:2}) },
+  { id:'dp1', n:36, cat:'drag', notes: build('RRLRR LLRLL', [.5,.25,.25,.25,.25, .5,.25,.25,.25,.25], [0,5], {1:2,6:2}) },
+  { id:'dp2', n:37, cat:'drag', notes: build('RRRLRR LLLRLL', [.5,.5,.25,.25,.25,.25, .5,.5,.25,.25,.25,.25], [0,6], {1:2,2:2,7:2,8:2}) },
+  { id:'d3',  n:38, cat:'drag', notes: build('RLRL LRLR', [T6,T6,T6,.5, T6,T6,T6,.5], [3,7], {0:2,4:2}) },
+  { id:'dr2', n:39, cat:'drag', notes: build('RRLRL LLRLR', [.5,T6,T6,T6,.5, .5,T6,T6,T6,.5], [4,9], {0:2,1:2,5:2,6:2}) },
+  { id:'dr3', n:40, cat:'drag', notes: build('RRRLRL LLLRLR', [.5,.5,T6,T6,T6,.5, .5,.5,T6,T6,T6,.5], [5,11], {0:2,1:2,2:2,6:2,7:2,8:2}) }
 ];
 
 var SIGS = [ {id:'4/4',beats:4,click:1}, {id:'3/4',beats:3,click:1}, {id:'2/4',beats:2,click:1}, {id:'5/4',beats:5,click:1}, {id:'6/8',beats:3,click:1.5} ];
@@ -66,12 +97,21 @@ function compile(rud){
   }
   var groups = [], cur = null;
   for (var j=0;j<notes.length;j++){
-    var nt = notes[j], idx = Math.floor(nt.at + E);
+    var nt = notes[j], idx = Math.floor(nt.at + E), tup = nt.t ? 1 : 0;
     if (nt.b === 0){ cur = null; continue; }
-    if (!cur || cur.beat !== idx || cur.b !== nt.b){ cur = {beat:idx,b:nt.b,t:nt.t,from:j,to:j}; groups.push(cur); }
-    else cur.to = j;
+    var brk = !cur || tup !== cur.tup
+           || (tup ? (nt.at - cur.start >= 1 - E) : (idx !== cur.beat));
+    if (brk){ cur = {beat:idx, start:nt.at, tup:tup, from:j, to:j, bmax:nt.b, dur:0}; groups.push(cur); }
+    else { cur.to = j; if (nt.b > cur.bmax) cur.bmax = nt.b; }
+    cur.dur += nt.d;
   }
-  for (var gi=0; gi<groups.length; gi++) if (groups[gi].t) groups[gi].t = groups[gi].to - groups[gi].from + 1;
+  for (var gi=0; gi<groups.length; gi++){
+    var g = groups[gi];
+    if (!g.tup){ g.t = 0; continue; }
+    var hasT3 = false;
+    for (var q=g.from; q<=g.to; q++) if (Math.abs(notes[q].d - T3) < .01) hasT3 = true;
+    g.t = Math.round(g.dur / (hasT3 ? T3 : T6));
+  }
   var top = 0, topD = .25;
   for (var k in tally) if (tally[k] > top){ top = tally[k]; topD = Number(k); }
   return { notes:notes, len:Math.round(at*1000)/1000, groups:groups, fig:figKey(topD) };
@@ -87,7 +127,7 @@ var els = {};
 
 var lang = document.documentElement.dataset.lang || 'pt';
 var D = window.RUDI_I18N[lang];
-var idx = 7, current = RUDIMENTS[idx], pattern = compile(current);
+var idx = 15, current = RUDIMENTS[idx], pattern = compile(current);
 var sig = SIGS[0], bpm = 100, spb = .6, hand = 'R';
 
 function letter(s){
@@ -228,6 +268,10 @@ function schedule(){
       var other = n.s === 'R' ? 'L' : 'R';
       if (n.g === 1) hit(nt - Math.min(.045, spb*.12), false, true, other);
       if (n.g === 2){ hit(nt - Math.min(.09, spb*.22), false, true, other); hit(nt - Math.min(.045, spb*.11), false, true, other); }
+      if (n.g === 3){
+        var span = Math.min(.28, n.d * spb * .85), step = .028;
+        for (var bz = step; bz < span; bz += step) hit(nt + bz, false, true, n.s);
+      }
       hit(nt, n.a, false, n.s);
     }
     visual.push({ t:nt, a:n.a });
@@ -273,6 +317,13 @@ function drawNote(n, x, showStick){
   }
   head(x, MID);
   cx.fillStyle = C.ink; cx.fillRect(x+5.2, top, 1.6, MID-top);
+  if (n.g === 3){
+    cx.strokeStyle = C.ink; cx.lineWidth = 2.2;
+    for (var zi=0; zi<3; zi++){
+      var zy = MID - 30 + zi*6;
+      cx.beginPath(); cx.moveTo(x+1, zy+3); cx.lineTo(x+11, zy-3); cx.stroke();
+    }
+  }
   if (n.a){
     cx.strokeStyle = C.ink; cx.lineWidth = 1.7; cx.beginPath();
     cx.moveTo(x-5, MID-44); cx.lineTo(x+5, MID-40); cx.lineTo(x-5, MID-36); cx.stroke();
@@ -320,7 +371,20 @@ function paint(beat){
       if (x2 < -60 || x1 > W+60) continue;
       var top = MID-40;
       if (g.from === g.to) x2 = x1 + 9;
-      for (var bi=0; bi<g.b; bi++){ cx.fillStyle = C.ink; cx.fillRect(x1, top+bi*6.5, x2-x1, 3.6); }
+      for (var lv=1; lv<=g.bmax; lv++){
+        var runStart = -1;
+        for (var q=g.from; q<=g.to+1; q++){
+          var on = q<=g.to && pattern.notes[q].b >= lv;
+          if (on && runStart < 0) runStart = q;
+          if (!on && runStart >= 0){
+            var rx1 = playX + (base+pattern.notes[runStart].at - beat)*px + 6;
+            var rx2 = playX + (base+pattern.notes[q-1].at - beat)*px + 6;
+            if (runStart === q-1) rx2 = rx1 + (lv === 1 && g.from === g.to ? 9 : 7);
+            cx.fillStyle = C.ink; cx.fillRect(rx1, top+(lv-1)*6.5, rx2-rx1, 3.6);
+            runStart = -1;
+          }
+        }
+      }
       if (g.t){
         cx.fillStyle = C.soft; cx.font = '400 11px "IBM Plex Mono", monospace'; cx.textAlign = 'center';
         cx.fillText(String(g.t), (x1+x2)/2, top - (pattern.notes[g.from].a ? 16 : 7));
@@ -379,6 +443,7 @@ function selectRud(i){
   current = RUDIMENTS[idx]; pattern = compile(current);
   describe(); markList(); restart();
   if (history.replaceState) history.replaceState(null, '', '#' + current.id);
+  document.body.dataset.shareText = (D.shareRud || '%s') .replace('%s', D.names[current.id]);
 }
 function buildList(q){
   q = (q || '').trim().toLowerCase();
@@ -399,7 +464,7 @@ function buildList(q){
       var b = document.createElement('button');
       b.className = 'item'; b.dataset.id = r.id;
       b.innerHTML = '<span class="txt"><span class="iname"></span><span class="isub"></span></span>';
-      b.querySelector('.iname').textContent = D.names[r.id];
+      b.querySelector('.iname').textContent = r.n + '. ' + D.names[r.id];
       b.querySelector('.isub').textContent = p.notes.map(function(n){ return letter(n.s); }).join(' ');
       b.addEventListener('click', function(){ selectRud(RUDIMENTS.indexOf(r)); closePicker(); });
       els.rudList.appendChild(b);
@@ -500,4 +565,5 @@ current = RUDIMENTS[idx]; pattern = compile(current);
 els.play.setAttribute('aria-label', D.play);
 els.theme.setAttribute('aria-label', D.theme);
 readTheme(); buildLugs(); resize(); setBpm(100, false); describe(); buildList(''); frame();
+document.body.dataset.shareText = (D.shareRud || '%s').replace('%s', D.names[current.id]);
 })();
