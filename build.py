@@ -623,10 +623,10 @@ DONATE_TEMPLATE = """<!DOCTYPE html>
 
 
 def donate_options(code):
-    c, out = DN.COPY[code], []
-    cfg = DN.DONATE
+    """Pix primeiro no Brasil; cartao primeiro nos outros idiomas, onde Pix nao existe."""
+    c, cfg, blocks = DN.COPY[code], DN.DONATE, {}
     if cfg["pix_key"]:
-        out.append(
+        blocks["pix"] = (
             '<div class="opt pix"><div class="opttxt"><h3>%s</h3><p>%s</p>'
             '<button class="btnmain" id="pixCopy" data-key="%s" data-done="%s">%s</button>'
             '<code class="pixkey">%s</code></div>'
@@ -635,13 +635,15 @@ def donate_options(code):
                esc(c["pixCopy"]), esc(cfg["pix_key"])))
     card = cfg["kofi"] or cfg["stripe"]
     if card:
-        out.append('<div class="opt"><div class="opttxt"><h3>%s</h3><p>%s</p>'
-                   '<a class="btnmain" href="%s" rel="noopener" target="_blank">%s</a></div></div>'
-                   % (esc(c["kofiTitle"]), esc(c["kofiNote"]), esc(card), esc(c["kofiBtn"])))
+        blocks["card"] = ('<div class="opt"><div class="opttxt"><h3>%s</h3><p>%s</p>'
+                          '<a class="btnmain" href="%s" rel="noopener" target="_blank">%s</a></div></div>'
+                          % (esc(c["kofiTitle"]), esc(c["kofiNote"]), esc(card), esc(c["kofiBtn"])))
     if cfg["paypal"]:
-        out.append('<div class="opt"><div class="opttxt"><h3>%s</h3><p>%s</p>'
-                   '<a class="btnmain" href="%s" rel="noopener" target="_blank">%s</a></div></div>'
-                   % (esc(c["paypalTitle"]), esc(c["paypalNote"]), esc(cfg["paypal"]), esc(c["paypalBtn"])))
+        blocks["paypal"] = ('<div class="opt"><div class="opttxt"><h3>%s</h3><p>%s</p>'
+                            '<a class="btnmain" href="%s" rel="noopener" target="_blank">%s</a></div></div>'
+                            % (esc(c["paypalTitle"]), esc(c["paypalNote"]), esc(cfg["paypal"]), esc(c["paypalBtn"])))
+    order = ["pix", "card", "paypal"] if code == "pt" else ["card", "paypal", "pix"]
+    out = [blocks[k] for k in order if k in blocks]
     if not out:
         out.append('<div class="opt"><div class="opttxt"><p>%s</p></div></div>' % esc(c["empty"]))
     return "".join(out)
