@@ -30,13 +30,13 @@ var RUDIMENTS = window.RUDIMENT_PATTERNS = [
   { id:'p2', cat:'para', notes: build('RLRLRR LRLRLL', T6, [0,6]) },
   { id:'p3', cat:'para', notes: build('RLRLRLRR LRLRLRLL', .25, [0,8]) },
   { id:'pd', cat:'para', notes: build('RLRRLL RLRRLL', T6, [0,6]) },
-  { id:'f1', cat:'flam', notes: build('RLRL', 1, [0,1,2,3], {0:1,1:1,2:1,3:1}) },
+  { id:'f1', cat:'flam', notes: build('RLRL', 1, [], {0:1,1:1,2:1,3:1}) },
   { id:'f2', cat:'flam', notes: build('RRLL', .5, [0,2], {0:1,2:1}) },
   { id:'f3', cat:'flam', notes: build('RLRLRL', T3, [0,3], {0:1,3:1}) },
   { id:'f4', cat:'flam', notes: build('RLRLR LRLRL', R5, [1,6], {0:1,4:1,5:1,9:1}) },
   { id:'d1', cat:'drag', notes: build('RLRL', 1, [], {0:2,1:2,2:2,3:2}) },
   { id:'d2', cat:'drag', notes: build('RLLR', .5, [1,3], {0:2,2:2}) },
-  { id:'d3', cat:'drag', notes: build('RLRL LRLR', .25, [3,7], {0:2,4:2}) }
+  { id:'d3', cat:'drag', notes: build('RLRL LRLR', [T6,T6,T6,.5, T6,T6,T6,.5], [3,7], {0:2,4:2}) }
 ];
 
 var SIGS = [ {id:'4/4',beats:4,click:1}, {id:'3/4',beats:3,click:1}, {id:'2/4',beats:2,click:1}, {id:'5/4',beats:5,click:1}, {id:'6/8',beats:3,click:1.5} ];
@@ -71,6 +71,7 @@ function compile(rud){
     if (!cur || cur.beat !== idx || cur.b !== nt.b){ cur = {beat:idx,b:nt.b,t:nt.t,from:j,to:j}; groups.push(cur); }
     else cur.to = j;
   }
+  for (var gi=0; gi<groups.length; gi++) if (groups[gi].t) groups[gi].t = groups[gi].to - groups[gi].from + 1;
   var top = 0, topD = .25;
   for (var k in tally) if (tally[k] > top){ top = tally[k]; topD = Number(k); }
   return { notes:notes, len:Math.round(at*1000)/1000, groups:groups, fig:figKey(topD) };
@@ -127,7 +128,7 @@ function audio(){
   if (actx.state === 'suspended') actx.resume();
   return actx;
 }
-function hit(time, accent, grace){
+function hit(time, accent, grace, side){
   var vol = (Number(els.volRud.value)/100) * (grace ? .3 : (accent ? 1 : .55));
   if (vol <= 0) return;
   var src = actx.createBufferSource(); src.buffer = noise;
@@ -137,7 +138,13 @@ function hit(time, accent, grace){
   g.gain.setValueAtTime(.0001, time);
   g.gain.exponentialRampToValueAtTime(Math.max(.001, vol*.5), time + .002);
   g.gain.exponentialRampToValueAtTime(.0001, time + dur);
-  src.connect(bp); bp.connect(g); g.connect(master);
+  src.connect(bp); bp.connect(g);
+  if (side && actx.createStereoPanner){
+    var pan = actx.createStereoPanner();
+    var right = (side === 'R') === (hand === 'R');
+    pan.pan.value = right ? .35 : -.35;
+    g.connect(pan); pan.connect(master);
+  } else g.connect(master);
   src.start(time); src.stop(time + dur + .02);
 }
 function click(time, first){
@@ -153,7 +160,7 @@ function click(time, first){
 
 var playing = false, anchorTime = 0, anchorBeat = 0;
 var nextNoteBeat = 0, nextNoteIdx = 0, nextClickBeat = 0, cycles = 0;
-var visual = [], timer = null, measures = 0, wake = null;
+var visual = [], timer = null, measures = 0, wake = null, lead = 0;
 
 function beatToTime(b){ return anchorTime + (b - anchorBeat) * spb; }
 function nowBeat(){ return actx ? anchorBeat + (actx.currentTime - anchorTime) / spb : 0; }
@@ -173,7 +180,7 @@ function lock(on){
 function start(){
   audio(); spb = secPerBeat(bpm);
   measures = 0; cycles = 0; nextNoteIdx = 0; visual = [];
-  var lead = els.optCount.checked ? sig.beats : 0;
+  lead = els.optCount.checked ? sig.beats : 0;
   anchorBeat = -lead; anchorTime = actx.currentTime + .14;
   nextNoteBeat = 0; nextClickBeat = -lead; playing = true;
   els.playIcon.innerHTML = '<rect x="6" y="5" width="4.5" height="14" rx="1"/><rect x="13.5" y="5" width="4.5" height="14" rx="1"/>';
@@ -218,9 +225,10 @@ function schedule(){
   while (beatToTime(nextNoteBeat) < horizon){
     var n = pattern.notes[nextNoteIdx], nt = beatToTime(nextNoteBeat);
     if (els.optRud.checked){
-      if (n.g === 1) hit(nt - Math.min(.045, spb*.12), false, true);
-      if (n.g === 2){ hit(nt - Math.min(.09, spb*.22), false, true); hit(nt - Math.min(.045, spb*.11), false, true); }
-      hit(nt, n.a, false);
+      var other = n.s === 'R' ? 'L' : 'R';
+      if (n.g === 1) hit(nt - Math.min(.045, spb*.12), false, true, other);
+      if (n.g === 2){ hit(nt - Math.min(.09, spb*.22), false, true, other); hit(nt - Math.min(.045, spb*.11), false, true, other); }
+      hit(nt, n.a, false, n.s);
     }
     visual.push({ t:nt, a:n.a });
     nextNoteIdx++;
@@ -290,8 +298,19 @@ function paint(beat){
       cx.fillText(String(m+1), mx+5, MID-2*GAP-9);
     }
   }
+  if (playing && lead > 0){
+    for (var cb = -lead; cb < 0; cb++){
+      var cxp = playX + (cb - beat)*px;
+      if (cxp < -40 || cxp > W+40) continue;
+      var now = Math.floor(beat) === cb;
+      cx.fillStyle = now ? C.red : C.soft; cx.globalAlpha = now ? 1 : .55;
+      cx.font = '700 ' + (now ? 34 : 26) + 'px "Big Shoulders Display", Impact, sans-serif'; cx.textAlign = 'center';
+      cx.fillText(String(cb + lead + 1), cxp, MID + 10);
+      cx.globalAlpha = 1;
+    }
+  }
   var showStick = els.optStick.checked;
-  for (var k = Math.floor(lb/pattern.len)-1; k <= Math.ceil(rb/pattern.len)+1; k++){
+  for (var k = Math.max(0, Math.floor(lb/pattern.len)-1); k <= Math.ceil(rb/pattern.len)+1; k++){
     var base = k*pattern.len;
     if (base+pattern.len < lb-1 || base > rb+1) continue;
     for (var gi=0; gi<pattern.groups.length; gi++){
