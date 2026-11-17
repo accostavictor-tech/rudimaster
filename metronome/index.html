@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
 <link rel="stylesheet" href="/styles.css" />
-<script>try{var t=localStorage.getItem('rudi-theme');if(t){document.documentElement.dataset.theme=t;if(t==='night')document.querySelector('meta[name=theme-color]').content='#121110';}}catch(e){}</script>
+<script>(function(){var d=document.documentElement,m=document.querySelector('meta[name=theme-color]'),B={"odery": {"name": "Odery", "url": "https://odery.com.br/", "theme": "night", "bar": "#141414"}, "aroma": {"name": "Aroma", "url": "https://aromamusic.com.br/", "theme": "paper", "bar": "#F1EDE6"}},b=null;try{var q=new URLSearchParams(location.search).get('brand');if(q!==null){q=q.toLowerCase();if(B[q])sessionStorage.setItem('rudi-brand',q);else sessionStorage.removeItem('rudi-brand');}b=sessionStorage.getItem('rudi-brand');}catch(e){}if(b&&B[b]){window.RUDI_BRAND=B[b];d.dataset.brand=b;d.dataset.theme=B[b].theme;m.content=B[b].bar;return;}try{var t=localStorage.getItem('rudi-theme');if(t){d.dataset.theme=t;if(t==='night')m.content='#121110';}}catch(e){}})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "RudiMaster", "url": "https://rudimaster.com/metronome/", "description": "Accurate online metronome with per-beat accent or mute, subdivision in eighths, triplets and sixteenths, tap tempo and progressive speed-up. Free, no sign-up.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any", "inLanguage": "en", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "featureList": ["Single stroke roll", "Single stroke four", "Single stroke seven", "Multiple bounce roll", "Triple stroke roll", "Double stroke roll", "Five stroke roll", "Six stroke roll", "Seven stroke roll", "Nine stroke roll", "Ten stroke roll", "Eleven stroke roll", "Thirteen stroke roll", "Fifteen stroke roll", "Seventeen stroke roll", "Single paradiddle", "Double paradiddle", "Triple paradiddle", "Paradiddle-diddle", "Flam", "Flam accent", "Flam tap", "Flamacue", "Flam paradiddle", "Single flammed mill", "Flam paradiddle-diddle", "Pataflafla", "Swiss army triplet", "Inverted flam tap", "Flam drag", "Drag (ruff)", "Single drag tap", "Double drag tap", "Lesson 25", "Single dragadiddle", "Drag paradiddle #1", "Drag paradiddle #2", "Single ratamacue", "Double ratamacue", "Triple ratamacue"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does the metronome work offline?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. After the first load the page runs without a connection, and it can be installed to your phone's home screen."}}, {"@type": "Question", "name": "Why mute some beats?", "acceptedAnswer": {"@type": "Answer", "text": "Playing with silent beats forces you to hold the pulse yourself. It is one of the most efficient exercises for internal time, and it makes any drifting obvious."}}, {"@type": "Question", "name": "How is this different from the rudiments mode?", "acceptedAnswer": {"@type": "Answer", "text": "In rudiments mode, on top of the click, the notation for the chosen rudiment scrolls across the screen and the pattern plays along as a guide."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -43,7 +43,7 @@
       <span class="wordmark"><b>Rudi</b><em>Master</em></span>
     </a>
     <div class="tools">
-      <a class="chip heart" href="/support/" aria-label="Support the project" title="Support"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.2-4.5-7.2-9.2a4 4 0 0 1 7.2-2.5 4 4 0 0 1 7.2 2.5c0 4.7-7.2 9.2-7.2 9.2z"/></svg></a><button class="chip" id="langBtn" aria-haspopup="true" aria-label="English">EN</button>
+      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="English">EN</button>
       <nav class="langmenu" id="langMenu"><a href="/metronome/" hreflang="en" aria-current="true">English</a><a href="/pt/metronomo/" hreflang="pt-BR" aria-current="false">Português</a><a href="/es/metronomo/" hreflang="es" aria-current="false">Español</a></nav>
       <button class="chip" id="theme" aria-label="Toggle theme">&#9681;</button>
     </div>
@@ -126,14 +126,14 @@
 </main>
 
 <footer class="sitefoot">
-  <span><a href="/support/"><strong>Support</strong></a> &middot; <a href="/">Home</a></span>
+  <span><a href="/">Home</a></span>
   <span><a href="/pt/metronomo/" hreflang="pt-BR">Português</a> &middot; <a href="/es/metronomo/" hreflang="es">Español</a></span>
 </footer>
 
-<a class="fab" id="fab" href="/support/" aria-label="Support the project"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.7-7.5-9.6a4.2 4.2 0 0 1 7.5-2.6 4.2 4.2 0 0 1 7.5 2.6c0 4.9-7.5 9.6-7.5 9.6z"/></svg><span>Support</span></a><button class="fabx" id="fabx" aria-label="Hide">&times;</button><script>(function(){var f=document.getElementById("fab"),x=document.getElementById("fabx");try{var t=Number(localStorage.getItem("rudi-fab")||0);if(Date.now()-t<2592000000){f.remove();x.remove();return;}}catch(e){}setTimeout(function(){f.classList.add("show");x.classList.add("show");},60000);x.addEventListener("click",function(){f.remove();x.remove();try{localStorage.setItem("rudi-fab",String(Date.now()));}catch(e){}});})();</script>
 <script src="/i18n.js"></script>
 <script src="/metronome.js" defer></script>
 <script src="/lang.js" defer></script>
 <script src="/share.js" defer></script>
+<script src="/brand.js" defer></script>
 </body>
 </html>

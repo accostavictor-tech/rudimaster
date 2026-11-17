@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
 <link rel="stylesheet" href="/styles.css" />
-<script>try{var t=localStorage.getItem('rudi-theme');if(t){document.documentElement.dataset.theme=t;if(t==='night')document.querySelector('meta[name=theme-color]').content='#121110';}}catch(e){}</script>
+<script>(function(){var d=document.documentElement,m=document.querySelector('meta[name=theme-color]'),B={"odery": {"name": "Odery", "url": "https://odery.com.br/", "theme": "night", "bar": "#141414"}, "aroma": {"name": "Aroma", "url": "https://aromamusic.com.br/", "theme": "paper", "bar": "#F1EDE6"}},b=null;try{var q=new URLSearchParams(location.search).get('brand');if(q!==null){q=q.toLowerCase();if(B[q])sessionStorage.setItem('rudi-brand',q);else sessionStorage.removeItem('rudi-brand');}b=sessionStorage.getItem('rudi-brand');}catch(e){}if(b&&B[b]){window.RUDI_BRAND=B[b];d.dataset.brand=b;d.dataset.theme=B[b].theme;m.content=B[b].bar;return;}try{var t=localStorage.getItem('rudi-theme');if(t){d.dataset.theme=t;if(t==='night')m.content='#121110';}}catch(e){}})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "RudiMaster", "url": "https://rudimaster.com/es/metronomo/", "description": "Metrónomo online preciso, con acento o silencio en cada tiempo, subdivisión en corcheas, tresillos y semicorcheas, tap tempo y aceleración progresiva. Gratuito y sin registro.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any", "inLanguage": "es", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "featureList": ["Redoble simple", "Redoble simple de cuatro", "Redoble simple de siete", "Redoble de presión (buzz roll)", "Redoble triple", "Redoble doble", "Redoble de 5 golpes", "Redoble de 6 golpes", "Redoble de 7 golpes", "Redoble de 9 golpes", "Redoble de 10 golpes", "Redoble de 11 golpes", "Redoble de 13 golpes", "Redoble de 15 golpes", "Redoble de 17 golpes", "Paradiddle simple", "Paradiddle doble", "Paradiddle triple", "Paradiddle-diddle", "Flam", "Flam accent", "Flam tap", "Flamacue", "Flam paradiddle", "Single flammed mill", "Flam paradiddle-diddle", "Pataflafla", "Swiss army triplet", "Flam tap invertido", "Flam drag", "Drag", "Drag tap simple", "Drag tap doble", "Lesson 25", "Dragadiddle simple", "Drag paradiddle n.º 1", "Drag paradiddle n.º 2", "Ratamacue simple", "Ratamacue doble", "Ratamacue triple"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿El metrónomo funciona sin conexión?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Tras la primera carga la página funciona sin internet, y se puede instalar en la pantalla de inicio del móvil."}}, {"@type": "Question", "name": "¿Por qué silenciar algunos tiempos?", "acceptedAnswer": {"@type": "Answer", "text": "Tocar con tiempos mudos te obliga a sostener el pulso por tu cuenta. Es uno de los ejercicios más eficientes para el tiempo interno, y deja en evidencia cualquier desvío."}}, {"@type": "Question", "name": "¿En qué se diferencia del modo rudimentos?", "acceptedAnswer": {"@type": "Answer", "text": "En el modo rudimentos, además del clic, la partitura del rudimento elegido corre por la pantalla y el patrón suena a la vez, sirviendo de guía."}}]}</script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -43,7 +43,7 @@
       <span class="wordmark"><b>Rudi</b><em>Master</em></span>
     </a>
     <div class="tools">
-      <a class="chip heart" href="/es/apoyar/" aria-label="Apoyar el proyecto" title="Apoyar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.2-4.5-7.2-9.2a4 4 0 0 1 7.2-2.5 4 4 0 0 1 7.2 2.5c0 4.7-7.2 9.2-7.2 9.2z"/></svg></a><button class="chip" id="langBtn" aria-haspopup="true" aria-label="Español">ES</button>
+      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="Español">ES</button>
       <nav class="langmenu" id="langMenu"><a href="/metronome/" hreflang="en" aria-current="false">English</a><a href="/pt/metronomo/" hreflang="pt-BR" aria-current="false">Português</a><a href="/es/metronomo/" hreflang="es" aria-current="true">Español</a></nav>
       <button class="chip" id="theme" aria-label="Cambiar tema">&#9681;</button>
     </div>
@@ -126,14 +126,14 @@
 </main>
 
 <footer class="sitefoot">
-  <span><a href="/es/apoyar/"><strong>Apoyar</strong></a> &middot; <a href="/es/">Inicio</a></span>
+  <span><a href="/es/">Inicio</a></span>
   <span><a href="/metronome/" hreflang="en">English</a> &middot; <a href="/pt/metronomo/" hreflang="pt-BR">Português</a></span>
 </footer>
 
-<a class="fab" id="fab" href="/es/apoyar/" aria-label="Apoyar el proyecto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.7-7.5-9.6a4.2 4.2 0 0 1 7.5-2.6 4.2 4.2 0 0 1 7.5 2.6c0 4.9-7.5 9.6-7.5 9.6z"/></svg><span>Apoyar</span></a><button class="fabx" id="fabx" aria-label="Ocultar">&times;</button><script>(function(){var f=document.getElementById("fab"),x=document.getElementById("fabx");try{var t=Number(localStorage.getItem("rudi-fab")||0);if(Date.now()-t<2592000000){f.remove();x.remove();return;}}catch(e){}setTimeout(function(){f.classList.add("show");x.classList.add("show");},60000);x.addEventListener("click",function(){f.remove();x.remove();try{localStorage.setItem("rudi-fab",String(Date.now()));}catch(e){}});})();</script>
 <script src="/i18n.js"></script>
 <script src="/metronome.js" defer></script>
 <script src="/lang.js" defer></script>
 <script src="/share.js" defer></script>
+<script src="/brand.js" defer></script>
 </body>
 </html>

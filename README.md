@@ -9,14 +9,13 @@ index.html              home em inglês, na raiz (escolha entre metrônomo e rud
 pt/index.html es/index.html          home em português e espanhol
 metronome/ pt/metronomo/ es/metronomo/     tela só do metrônomo
 rudiments/ pt/rudimentos/ es/rudimentos/   tela de treino de rudimentos
-support/ pt/apoiar/ es/apoyar/             página de apoio
 lang.js                 sugere a versão no idioma do navegador, sem redirecionar
+brand.js                link para o site da marca parceira no rodapé (versões ?brand=)
 styles.css              estilos compartilhados
 app.js                  motor da tela de rudimentos: áudio, notação e interface
 metronome.js            motor da tela do metrônomo
 i18n.js                 dicionário dos três idiomas (gerado pelo build)
 build.py                gera todas as páginas, i18n.js, sitemap, robots, manifest e vercel.json
-donate.py               configuração, textos e gerador do BR Code Pix da página de apoio
 icons.py                gera favicon PNG, ícones do PWA e as imagens de compartilhamento
 favicon.svg             favicon vetorial
 og-pt.png og-en.png og-es.png    imagens de compartilhamento (1200×630)
@@ -42,7 +41,7 @@ vercel --prod   # produção
 ## Analytics
 
 Usa Vercel Web Analytics, que é sem cookie e não exige banner de consentimento.
-A tag é injetada nas doze páginas pelo `build.py`, a partir das constantes
+A tag é injetada nas nove páginas pelo `build.py`, a partir das constantes
 `VERCEL_ANALYTICS` e `VERCEL_SPEED_INSIGHTS` no topo do arquivo.
 
 Só funciona depois de habilitar em Settings, Analytics, no painel do projeto.
@@ -56,7 +55,7 @@ Se você migrar de plano, os eventos passam a aparecer sem mexer no código.
 ## Idiomas e rotas
 
 O inglês fica na raiz, e português e espanhol em subpasta. A ordem vem dos
-dicionários `HOME`, `PATHS` e `MET` no `build.py`, mais `PATHS` no `donate.py`.
+dicionários `HOME`, `PATHS` e `MET` no `build.py`.
 Se trocar de novo, lembre de apagar as pastas antigas antes de rodar o build,
 porque ele escreve mas não remove, e de atualizar os redirecionamentos em
 `vercel.json` (também gerados pelo `build.py`).
@@ -66,24 +65,20 @@ sugerindo a versão equivalente quando o idioma do navegador difere do da págin
 e guarda a escolha. Redirecionar automaticamente esconderia as outras versões do
 Googlebot, que rastreia quase sempre a partir dos Estados Unidos.
 
-## Configurar a página de apoio
+## Versões com marca parceira
 
-Abra `donate.py` e preencha o dicionário `DONATE`. Cada bloco vazio simplesmente não aparece na página, e o build avisa no terminal o que ainda falta.
+Qualquer página aceita `?brand=<id>` na URL, por exemplo `/?brand=odery` ou
+`/pt/rudimentos/?brand=aroma`. A marca troca as cores, põe o selo "by Marca" ao
+lado do nome e um link para o site dela no rodapé. O id fica guardado na aba,
+então a identidade continua ao navegar entre as telas; `?brand=` vazio volta ao
+visual padrão.
 
-```python
-DONATE = {
-    "pix_key":  "sua@chave.pix",   # e-mail, telefone, CPF/CNPJ ou chave aleatória
-    "pix_name": "SEU NOME",        # até 25 caracteres, sem acento
-    "pix_city": "MACEIO",          # até 15 caracteres, sem acento
-    "kofi":     "https://ko-fi.com/seuusuario",
-    "paypal":   "https://paypal.me/seuusuario",
-    "stripe":   "",                # alternativa ao Ko-fi, se preferir
-}
-```
+As marcas ficam no dicionário `BRANDS` do `build.py` (nome, site, tema e cor da
+barra do navegador) e as cores em `styles.css`, na seção de versões com marca.
+Para incluir uma marca nova, acrescente nos dois lugares e rode `python3 build.py`.
 
-Rode `python3 build.py`. Se a chave Pix estiver preenchida, ele gera `pix-qr.png` com o BR Code estático, sem valor fixo, então quem doa escolhe quanto. O algoritmo segue o padrão EMV do Banco Central, com CRC16-CCITT.
-
-Sugestão de conta para receber cartão internacional: o Ko-fi não cobra taxa sobre doação, apenas a taxa do processador. O Stripe funciona igual via link de pagamento avulso, com taxa maior por transação.
+As antigas páginas de apoio (`/support/`, `/pt/apoiar/`, `/es/apoyar/`) foram
+retiradas e redirecionam para o início do idioma correspondente.
 
 ## Antes de publicar
 

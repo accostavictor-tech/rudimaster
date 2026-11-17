@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Gera as paginas localizadas do RudiMaster a partir de uma unica fonte."""
 import json, os, re
-import donate as DN
 
 BASE = "https://rudimaster.com"   # troque aqui se o dominio mudar
 OUT = os.path.dirname(os.path.abspath(__file__))
@@ -301,15 +300,27 @@ def jsonld(code, seo=None, path=None, extra_type="WebApplication"):
     return ('<script type="application/ld+json">%s</script>\n<script type="application/ld+json">%s</script>'
             % (json.dumps(app, ensure_ascii=False), json.dumps(faq, ensure_ascii=False)))
 
-FAB_LABEL = {"pt":"Apoiar o projeto","en":"Support the project","es":"Apoyar el proyecto"}
-FAB_CLOSE = {"pt":"Esconder","en":"Hide","es":"Ocultar"}
 
+# Versoes com marca parceira, ativadas por ?brand=<id> na URL. O id fica guardado
+# na aba (sessionStorage), entao a identidade continua ao navegar entre as telas;
+# ?brand= vazio volta ao visual padrao. Cores e selo ficam em styles.css e o link
+# para o site da marca, no rodape, fica em brand.js.
+BRANDS = {
+  "odery": {"name":"Odery","url":"https://odery.com.br/","theme":"night","bar":"#141414"},
+  "aroma": {"name":"Aroma","url":"https://aromamusic.com.br/","theme":"paper","bar":"#F1EDE6"},
+}
 
-def heart(code):
-    return ('<a class="chip heart" href="%s" aria-label="%s" title="%s">'
-            '<svg viewBox="0 0 24 24" aria-hidden="true">'
-            '<path d="M12 20.3s-7.2-4.5-7.2-9.2a4 4 0 0 1 7.2-2.5 4 4 0 0 1 7.2 2.5c0 4.7-7.2 9.2-7.2 9.2z"/>'
-            '</svg></a>' % (DN.PATHS[code], esc(FAB_LABEL[code]), esc(DN.NAV[code])))
+# Roda no <head>, antes de pintar a pagina: aplica a marca (se houver) ou o tema salvo.
+HEAD_SCRIPT = (
+    "<script>(function(){var d=document.documentElement,"
+    "m=document.querySelector('meta[name=theme-color]'),B=%s,b=null;"
+    "try{var q=new URLSearchParams(location.search).get('brand');"
+    "if(q!==null){q=q.toLowerCase();if(B[q])sessionStorage.setItem('rudi-brand',q);"
+    "else sessionStorage.removeItem('rudi-brand');}b=sessionStorage.getItem('rudi-brand');}catch(e){}"
+    "if(b&&B[b]){window.RUDI_BRAND=B[b];d.dataset.brand=b;d.dataset.theme=B[b].theme;m.content=B[b].bar;return;}"
+    "try{var t=localStorage.getItem('rudi-theme');if(t){d.dataset.theme=t;"
+    "if(t==='night')m.content='#121110';}}catch(e){}})();</script>"
+    % json.dumps(BRANDS, ensure_ascii=False))
 
 
 SHARE_TXT = {
@@ -333,21 +344,6 @@ def share(code):
             '<a class="sharebtn" data-net="reddit" href="#" target="_blank" rel="noopener">Reddit</a>'
             '</div>' % (esc(t["text"]), esc(t["lab"]), esc(t["native"])))
 
-
-def fab(code):
-    """Bolha flutuante de apoio. Some enquanto o metronomo esta tocando."""
-    return (
-      '<a class="fab" id="fab" href="%s" aria-label="%s">'
-      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.7-7.5-9.6a4.2 4.2 0 0 1 7.5-2.6 4.2 4.2 0 0 1 7.5 2.6c0 4.9-7.5 9.6-7.5 9.6z"/></svg>'
-      '<span>%s</span></a>'
-      '<button class="fabx" id="fabx" aria-label="%s">&times;</button>'
-      '<script>(function(){var f=document.getElementById("fab"),x=document.getElementById("fabx");'
-      'try{var t=Number(localStorage.getItem("rudi-fab")||0);'
-      'if(Date.now()-t<2592000000){f.remove();x.remove();return;}}catch(e){}'
-      'setTimeout(function(){f.classList.add("show");x.classList.add("show");},60000);'
-      'x.addEventListener("click",function(){f.remove();x.remove();'
-      'try{localStorage.setItem("rudi-fab",String(Date.now()));}catch(e){}});})();</script>'
-      % (DN.PATHS[code], esc(FAB_LABEL[code]), esc(DN.NAV[code]), esc(FAB_CLOSE[code])))
 
 MARK = ('<svg class="mark" viewBox="0 0 64 64" aria-hidden="true">'
   '<circle cx="32" cy="32" r="32" fill="var(--btn)"/>'
@@ -388,7 +384,7 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
 <link rel="stylesheet" href="/styles.css" />
-<script>try{{var t=localStorage.getItem('rudi-theme');if(t){{document.documentElement.dataset.theme=t;if(t==='night')document.querySelector('meta[name=theme-color]').content='#121110';}}}}catch(e){{}}</script>
+{headscript}
 {jsonld}
 </head>
 <body>
@@ -401,7 +397,7 @@ TEMPLATE = """<!DOCTYPE html>
       <h1 class="wordmark"><b>Rudi</b><em>Master</em></h1>
     </a>
     <div class="tools">
-      {heart}<button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
+      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
       <nav class="langmenu" id="langMenu">{langmenu}</nav>
       <button class="chip" id="theme" aria-label="{theme}">&#9681;</button>
     </div>
@@ -514,161 +510,14 @@ TEMPLATE = """<!DOCTYPE html>
 
 <footer class="sitefoot">
   <span>RudiMaster &middot; {footNote}</span>
-  <span><a href="{donatepath}"><strong>{donatenav}</strong></a> &middot; {footlinks}</span>
+  <span>{footlinks}</span>
 </footer>
 
-{fab}
 <script src="/i18n.js"></script>
 <script src="/app.js" defer></script>
 </body>
 </html>
 """
-
-DONATE_TEMPLATE = """<!DOCTYPE html>
-<html lang="{htmllang}" data-theme="paper" data-lang="{code}">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>{title}</title>
-<meta name="description" content="{desc}" />
-<link rel="canonical" href="{base}{path}" />
-{hreflang}
-<meta name="theme-color" content="#E7DFCC" />
-<meta name="robots" content="index,follow" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="RudiMaster" />
-<meta property="og:locale" content="{oglocale}" />
-<meta property="og:title" content="{title}" />
-<meta property="og:description" content="{desc}" />
-<meta property="og:url" content="{base}{path}" />
-<meta property="og:image" content="{base}/og-{code}.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/manifest.webmanifest" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
-<link rel="stylesheet" href="/styles.css" />
-<script>try{{var t=localStorage.getItem('rudi-theme');if(t){{document.documentElement.dataset.theme=t;if(t==='night')document.querySelector('meta[name=theme-color]').content='#121110';}}}}catch(e){{}}</script>
-</head>
-<body>
-
-<div class="app">
-  <div class="bar">
-    <a class="brand" href="{applink}" style="text-decoration:none">
-      {mark}
-      <span class="wordmark"><b>Rudi</b><em>Master</em></span>
-    </a>
-    <div class="tools">
-      {heart}<button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
-      <nav class="langmenu" id="langMenu">{langmenu}</nav>
-      <button class="chip" id="theme" aria-label="{theme}">&#9681;</button>
-    </div>
-  </div>
-</div>
-
-<main class="page">
-  <h1 class="pagetitle">{h1}</h1>
-  <p class="lead">{lead}</p>
-
-  <section class="first">
-    {options}
-  </section>
-
-  <section>
-    <h2>{whatTitle}</h2>
-    <ul class="ticks">{what}</ul>
-  </section>
-
-  <section>
-    <h2>{freeTitle}</h2>
-    <ul class="ticks">{free}</ul>
-    {share}
-  </section>
-
-  <p class="thanks">{thanks}</p>
-  <p><a class="backlink" href="{applink}">&#8592; {back}</a></p>
-</main>
-
-<footer class="sitefoot">
-  <span>RudiMaster</span>
-  <span>{footlinks}</span>
-</footer>
-
-<script>
-(function(){{
-  var b=document.getElementById('langBtn'), m=document.getElementById('langMenu');
-  b.addEventListener('click',function(e){{e.stopPropagation();m.classList.toggle('open');}});
-  document.addEventListener('click',function(){{m.classList.remove('open');}});
-  document.getElementById('theme').addEventListener('click',function(){{
-    var n=document.documentElement.dataset.theme==='night'?'paper':'night';
-    document.documentElement.dataset.theme=n;
-    document.querySelector('meta[name=theme-color]').content=n==='night'?'#121110':'#E7DFCC';
-    try{{localStorage.setItem('rudi-theme',n);}}catch(e){{}}
-  }});
-  var c=document.getElementById('pixCopy');
-  if(c) c.addEventListener('click',function(){{
-    var k=c.dataset.key, done=c.dataset.done, old=c.textContent;
-    function ok(){{c.textContent=done;setTimeout(function(){{c.textContent=old;}},2200);}}
-    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(k).then(ok,ok);
-    else {{var t=document.createElement('textarea');t.value=k;document.body.appendChild(t);t.select();
-           try{{document.execCommand('copy');}}catch(e){{}}document.body.removeChild(t);ok();}}
-  }});
-}})();
-</script>
-</body>
-</html>
-"""
-
-
-def donate_options(code):
-    """Pix primeiro no Brasil; cartao primeiro nos outros idiomas, onde Pix nao existe."""
-    c, cfg, blocks = DN.COPY[code], DN.DONATE, {}
-    if cfg["pix_key"]:
-        blocks["pix"] = (
-            '<div class="opt pix"><div class="opttxt"><h3>%s</h3><p>%s</p>'
-            '<button class="btnmain" id="pixCopy" data-key="%s" data-done="%s">%s</button>'
-            '<code class="pixkey">%s</code></div>'
-            '<img class="qr" src="/pix-qr.png" width="220" height="220" alt="QR Code Pix" loading="lazy" /></div>'
-            % (esc(c["pixTitle"]), esc(c["pixNote"]), esc(cfg["pix_key"]), esc(c["pixDone"]),
-               esc(c["pixCopy"]), esc(cfg["pix_key"])))
-    card = cfg["kofi"] or cfg["stripe"]
-    if card:
-        blocks["card"] = ('<div class="opt"><div class="opttxt"><h3>%s</h3><p>%s</p>'
-                          '<a class="btnmain" href="%s" rel="noopener" target="_blank">%s</a></div></div>'
-                          % (esc(c["kofiTitle"]), esc(c["kofiNote"]), esc(card), esc(c["kofiBtn"])))
-    if cfg["paypal"]:
-        blocks["paypal"] = ('<div class="opt"><div class="opttxt"><h3>%s</h3><p>%s</p>'
-                            '<a class="btnmain" href="%s" rel="noopener" target="_blank">%s</a></div></div>'
-                            % (esc(c["paypalTitle"]), esc(c["paypalNote"]), esc(cfg["paypal"]), esc(c["paypalBtn"])))
-    order = ["pix", "card", "paypal"] if code == "pt" else ["card", "paypal", "pix"]
-    out = [blocks[k] for k in order if k in blocks]
-    if not out:
-        out.append('<div class="opt"><div class="opttxt"><p>%s</p></div></div>' % esc(c["empty"]))
-    return "".join(out)
-
-
-def render_donate(code):
-    ui, c = UI[code], DN.COPY[code]
-    tags = "".join('<link rel="alternate" hreflang="%s" href="%s%s" />' % (k, BASE, v)
-                   for k, v in DN.PATHS.items())
-    tags += '<link rel="alternate" hreflang="x-default" href="%s%s" />' % (BASE, DN.PATHS["en"])
-    menu = "".join('<a href="%s" hreflang="%s" aria-current="%s">%s</a>' %
-                   (DN.PATHS[k], UI[k]["html"], "true" if k == code else "false", UI[k]["label"])
-                   for k in DN.PATHS)
-    footlinks = " &middot; ".join('<a href="%s" hreflang="%s">%s</a>' % (DN.PATHS[k], UI[k]["html"], UI[k]["label"])
-                                  for k in DN.PATHS if k != code)
-    oglocale = {"pt": "pt_BR", "en": "en_US", "es": "es_ES"}[code]
-    return DONATE_TEMPLATE.format(
-        htmllang=ui["html"], code=code, base=BASE, path=DN.PATHS[code], oglocale=oglocale,
-        title=esc(c["title"]), desc=esc(c["desc"]), hreflang=tags, mark=MARK,
-        langcode=code.upper(), langlabel=esc(ui["label"]), langmenu=menu, theme=esc(ui["theme"]),
-        applink=PATHS[code], h1=esc(c["h1"]), lead=esc(c["lead"]),
-        whatTitle=esc(c["whatTitle"]), what="".join("<li>%s</li>" % esc(x) for x in c["what"]),
-        howTitle=esc(c["howTitle"]), options=donate_options(code),
-        freeTitle=esc(c["freeTitle"]), free="".join("<li>%s</li>" % esc(x) for x in c["free"]),
-        thanks=esc(c["thanks"]), back=esc(c["back"]), footlinks=footlinks, heart="", share=share(code))
 
 HEAD_COMMON = """<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
@@ -697,7 +546,7 @@ HEAD_COMMON = """<meta charset="utf-8" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
 <link rel="stylesheet" href="/styles.css" />
-<script>try{{var t=localStorage.getItem('rudi-theme');if(t){{document.documentElement.dataset.theme=t;if(t==='night')document.querySelector('meta[name=theme-color]').content='#121110';}}}}catch(e){{}}</script>"""
+{headscript}"""
 
 
 HOME_TEMPLATE = """<!DOCTYPE html>
@@ -715,7 +564,7 @@ HOME_TEMPLATE = """<!DOCTYPE html>
       <span class="wordmark"><b>Rudi</b><em>Master</em></span>
     </div>
     <div class="tools">
-      {heart}<button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
+      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
       <nav class="langmenu" id="langMenu">{langmenu}</nav>
       <button class="chip" id="theme" aria-label="{theme}">&#9681;</button>
     </div>
@@ -758,11 +607,10 @@ HOME_TEMPLATE = """<!DOCTYPE html>
 </main>
 
 <footer class="sitefoot">
-  <span><a href="{donatepath}"><strong>{donatenav}</strong></a></span>
+  <span>RudiMaster</span>
   <span>{footlinks}</span>
 </footer>
 
-{fab}
 <script src="/i18n.js"></script>
 <script>
 (function(){{
@@ -798,7 +646,7 @@ MET_TEMPLATE = """<!DOCTYPE html>
       <span class="wordmark"><b>Rudi</b><em>Master</em></span>
     </a>
     <div class="tools">
-      {heart}<button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
+      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="{langlabel}">{langcode}</button>
       <nav class="langmenu" id="langMenu">{langmenu}</nav>
       <button class="chip" id="theme" aria-label="{theme}">&#9681;</button>
     </div>
@@ -881,11 +729,10 @@ MET_TEMPLATE = """<!DOCTYPE html>
 </main>
 
 <footer class="sitefoot">
-  <span><a href="{donatepath}"><strong>{donatenav}</strong></a> &middot; <a href="{homepath}">{homelab}</a></span>
+  <span><a href="{homepath}">{homelab}</a></span>
   <span>{footlinks}</span>
 </footer>
 
-{fab}
 <script src="/i18n.js"></script>
 <script src="/metronome.js" defer></script>
 </body>
@@ -911,7 +758,7 @@ def render_home(code):
         metTitle=esc(s["metTitle"]), metDesc=esc(s["metDesc"]),
         rudTitle=esc(s["rudTitle"]), rudDesc=esc(s["rudDesc"]), cta=esc(s["cta"]),
         aboutTitle=esc(s["aboutTitle"]), about=esc(s["about"]),
-        donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]), footlinks=footlinks, fab=fab(code), heart=heart(code), share=share(code))
+        footlinks=footlinks, share=share(code), headscript=HEAD_SCRIPT)
 
 
 def render_met(code):
@@ -936,7 +783,7 @@ def render_met(code):
         featTitle=esc(s["featTitle"]), feats="".join("<li>%s</li>" % esc(x) for x in s["feats"]),
         faqTitle=esc(s["faqTitle"]),
         faq="".join('<details><summary>%s</summary><p>%s</p></details>' % (esc(q), esc(a)) for q, a in s["faq"]),
-        donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]), footlinks=footlinks, fab=fab(code), heart=heart(code), share=share(code))
+        footlinks=footlinks, share=share(code), headscript=HEAD_SCRIPT)
 
 
 def render(code):
@@ -961,15 +808,14 @@ def render(code):
         howTitle=esc(s["howTitle"]), howIntro=esc(s["howIntro"]), steps=steps,
         listTitle=esc(s["listTitle"]), listIntro=esc(s["listIntro"]), rudlists=rud_lists(code),
         faqTitle=esc(s["faqTitle"]), faq=faq, footNote=esc(s["footNote"]), footlinks=footlinks,
-        donatepath=DN.PATHS[code], donatenav=esc(DN.NAV[code]),
         homepath=HOME[code], homelab=esc(ui["home"]), metpath=MET[code], tomet=esc(ui["toMet"]),
-        fab=fab(code), heart=heart(code), share=share(code))
+        share=share(code), headscript=HEAD_SCRIPT)
 
 def write(rel, text):
     if rel.endswith("index.html"):
         if ANALYTICS_TAG:
             text = text.replace("</head>", ANALYTICS_TAG + "</head>", 1)
-        text = text.replace("</body>", '<script src="/lang.js" defer></script>\n<script src="/share.js" defer></script>\n</body>', 1)
+        text = text.replace("</body>", '<script src="/lang.js" defer></script>\n<script src="/share.js" defer></script>\n<script src="/brand.js" defer></script>\n</body>', 1)
     p = os.path.join(OUT, rel)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8").write(text)
@@ -985,20 +831,6 @@ def main():
     for code, path in MET.items():
         made.append(write(path.strip("/") + "/index.html", render_met(code)))
 
-    for code, dpath in DN.PATHS.items():
-        made.append(write(dpath.strip("/") + "/index.html", render_donate(code)))
-
-    if DN.DONATE["pix_key"]:
-        payload = DN.pix_payload(DN.DONATE["pix_key"], DN.DONATE["pix_name"], DN.DONATE["pix_city"])
-        DN.write_pix_qr(os.path.join(OUT, "pix-qr.png"), payload)
-        made.append("pix-qr.png")
-    else:
-        print("aviso: chave Pix vazia em donate.py, o bloco de Pix nao aparece na pagina")
-    if not (DN.DONATE["kofi"] or DN.DONATE["stripe"]):
-        print("aviso: nenhum link de cartao configurado em donate.py")
-    if not DN.DONATE["paypal"]:
-        print("aviso: PayPal nao configurado em donate.py")
-
     made.append(write("i18n.js", "window.RUDI_I18N = %s;\n" % json.dumps(UI, ensure_ascii=False)))
 
     def block(group, prio):
@@ -1008,7 +840,7 @@ def main():
                 "".join('<xhtml:link rel="alternate" hreflang="%s" href="%s%s"/>' % (c2, BASE, p2)
                         for c2, p2 in group.items()))
             for p in group.values())
-    urls = block(HOME, "1.0") + block(MET, "0.9") + block(PATHS, "0.9") + block(DN.PATHS, "0.5")
+    urls = block(HOME, "1.0") + block(MET, "0.9") + block(PATHS, "0.9")
     made.append(write("sitemap.xml",
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
@@ -1034,7 +866,11 @@ def main():
             {"source": "/en/:path*", "destination": "/:path*", "permanent": True},
             {"source": "/rudimentos", "destination": "/pt/rudimentos", "permanent": True},
             {"source": "/metronomo", "destination": "/pt/metronomo", "permanent": True},
-            {"source": "/apoiar", "destination": "/pt/apoiar", "permanent": True}],
+            # a antiga pagina de apoio saiu do site; os links antigos levam para o inicio
+            {"source": "/apoiar/:path*", "destination": "/pt/", "permanent": True},
+            {"source": "/pt/apoiar/:path*", "destination": "/pt/", "permanent": True},
+            {"source": "/es/apoyar/:path*", "destination": "/es/", "permanent": True},
+            {"source": "/support/:path*", "destination": "/", "permanent": True}],
         "headers": [
             {"source":"/(.*)","headers":[
                 {"key":"X-Content-Type-Options","value":"nosniff"},

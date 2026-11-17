@@ -23,8 +23,23 @@
       "permanent": true
     },
     {
-      "source": "/apoiar",
-      "destination": "/pt/apoiar",
+      "source": "/apoiar/:path*",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/apoiar/:path*",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/es/apoyar/:path*",
+      "destination": "/es/",
+      "permanent": true
+    },
+    {
+      "source": "/support/:path*",
+      "destination": "/",
       "permanent": true
     }
   ],

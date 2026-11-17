@@ -68,4 +68,4 @@ você pode voltar com um clique em Deployments.
 
 Abra `build.py`, troque a constante `BASE` pelo domínio real e rode
 `python3 build.py`. É de lá que saem canonical, hreflang, Open Graph e
-sitemap das doze páginas.
+sitemap das nove páginas.

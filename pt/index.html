@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
 <link rel="stylesheet" href="/styles.css" />
-<script>try{var t=localStorage.getItem('rudi-theme');if(t){document.documentElement.dataset.theme=t;if(t==='night')document.querySelector('meta[name=theme-color]').content='#121110';}}catch(e){}</script>
+<script>(function(){var d=document.documentElement,m=document.querySelector('meta[name=theme-color]'),B={"odery": {"name": "Odery", "url": "https://odery.com.br/", "theme": "night", "bar": "#141414"}, "aroma": {"name": "Aroma", "url": "https://aromamusic.com.br/", "theme": "paper", "bar": "#F1EDE6"}},b=null;try{var q=new URLSearchParams(location.search).get('brand');if(q!==null){q=q.toLowerCase();if(B[q])sessionStorage.setItem('rudi-brand',q);else sessionStorage.removeItem('rudi-brand');}b=sessionStorage.getItem('rudi-brand');}catch(e){}if(b&&B[b]){window.RUDI_BRAND=B[b];d.dataset.brand=b;d.dataset.theme=B[b].theme;m.content=B[b].bar;return;}try{var t=localStorage.getItem('rudi-theme');if(t){d.dataset.theme=t;if(t==='night')m.content='#121110';}}catch(e){}})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "RudiMaster", "url": "https://rudimaster.com/pt/", "description": "Escolha o metrônomo online, com acento por tempo e subdivisões, ou o treino de rudimentos com partitura animada. Gratuito e sem cadastro.", "inLanguage": "pt-BR"}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -41,7 +41,7 @@
       <span class="wordmark"><b>Rudi</b><em>Master</em></span>
     </div>
     <div class="tools">
-      <a class="chip heart" href="/pt/apoiar/" aria-label="Apoiar o projeto" title="Apoiar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.2-4.5-7.2-9.2a4 4 0 0 1 7.2-2.5 4 4 0 0 1 7.2 2.5c0 4.7-7.2 9.2-7.2 9.2z"/></svg></a><button class="chip" id="langBtn" aria-haspopup="true" aria-label="Português">PT</button>
+      <button class="chip" id="langBtn" aria-haspopup="true" aria-label="Português">PT</button>
       <nav class="langmenu" id="langMenu"><a href="/" hreflang="en" aria-current="false">English</a><a href="/pt/" hreflang="pt-BR" aria-current="true">Português</a><a href="/es/" hreflang="es" aria-current="false">Español</a></nav>
       <button class="chip" id="theme" aria-label="Alternar tema">&#9681;</button>
     </div>
@@ -84,11 +84,10 @@
 </main>
 
 <footer class="sitefoot">
-  <span><a href="/pt/apoiar/"><strong>Apoiar</strong></a></span>
+  <span>RudiMaster</span>
   <span><a href="/" hreflang="en">English</a> &middot; <a href="/es/" hreflang="es">Español</a></span>
 </footer>
 
-<a class="fab" id="fab" href="/pt/apoiar/" aria-label="Apoiar o projeto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.7-7.5-9.6a4.2 4.2 0 0 1 7.5-2.6 4.2 4.2 0 0 1 7.5 2.6c0 4.9-7.5 9.6-7.5 9.6z"/></svg><span>Apoiar</span></a><button class="fabx" id="fabx" aria-label="Esconder">&times;</button><script>(function(){var f=document.getElementById("fab"),x=document.getElementById("fabx");try{var t=Number(localStorage.getItem("rudi-fab")||0);if(Date.now()-t<2592000000){f.remove();x.remove();return;}}catch(e){}setTimeout(function(){f.classList.add("show");x.classList.add("show");},60000);x.addEventListener("click",function(){f.remove();x.remove();try{localStorage.setItem("rudi-fab",String(Date.now()));}catch(e){}});})();</script>
 <script src="/i18n.js"></script>
 <script>
 (function(){
@@ -105,5 +104,6 @@
 </script>
 <script src="/lang.js" defer></script>
 <script src="/share.js" defer></script>
+<script src="/brand.js" defer></script>
 </body>
 </html>
