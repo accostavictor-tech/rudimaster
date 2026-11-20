@@ -861,16 +861,17 @@ def main():
     made.append(write("vercel.json", json.dumps({
         "cleanUrls": True,
         "trailingSlash": True,
+        # Com trailingSlash, a Vercel poe a barra final antes (/en -> /en/) e so depois
+        # aplica estes redirecionamentos, entao as origens precisam aceitar a barra.
         "redirects": [
-            {"source": "/en", "destination": "/", "permanent": True},
-            {"source": "/en/:path*", "destination": "/:path*", "permanent": True},
-            {"source": "/rudimentos", "destination": "/pt/rudimentos", "permanent": True},
-            {"source": "/metronomo", "destination": "/pt/metronomo", "permanent": True},
+            {"source": "/en/:path(.*)", "destination": "/:path", "permanent": True},
+            {"source": "/rudimentos/", "destination": "/pt/rudimentos/", "permanent": True},
+            {"source": "/metronomo/", "destination": "/pt/metronomo/", "permanent": True},
             # a antiga pagina de apoio saiu do site; os links antigos levam para o inicio
-            {"source": "/apoiar/:path*", "destination": "/pt/", "permanent": True},
-            {"source": "/pt/apoiar/:path*", "destination": "/pt/", "permanent": True},
-            {"source": "/es/apoyar/:path*", "destination": "/es/", "permanent": True},
-            {"source": "/support/:path*", "destination": "/", "permanent": True}],
+            {"source": "/apoiar/:path(.*)", "destination": "/pt/", "permanent": True},
+            {"source": "/pt/apoiar/:path(.*)", "destination": "/pt/", "permanent": True},
+            {"source": "/es/apoyar/:path(.*)", "destination": "/es/", "permanent": True},
+            {"source": "/support/:path(.*)", "destination": "/", "permanent": True}],
         "headers": [
             {"source":"/(.*)","headers":[
                 {"key":"X-Content-Type-Options","value":"nosniff"},

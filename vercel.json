@@ -3,42 +3,37 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/en",
-      "destination": "/",
+      "source": "/en/:path(.*)",
+      "destination": "/:path",
       "permanent": true
     },
     {
-      "source": "/en/:path*",
-      "destination": "/:path*",
+      "source": "/rudimentos/",
+      "destination": "/pt/rudimentos/",
       "permanent": true
     },
     {
-      "source": "/rudimentos",
-      "destination": "/pt/rudimentos",
+      "source": "/metronomo/",
+      "destination": "/pt/metronomo/",
       "permanent": true
     },
     {
-      "source": "/metronomo",
-      "destination": "/pt/metronomo",
-      "permanent": true
-    },
-    {
-      "source": "/apoiar/:path*",
+      "source": "/apoiar/:path(.*)",
       "destination": "/pt/",
       "permanent": true
     },
     {
-      "source": "/pt/apoiar/:path*",
+      "source": "/pt/apoiar/:path(.*)",
       "destination": "/pt/",
       "permanent": true
     },
     {
-      "source": "/es/apoyar/:path*",
+      "source": "/es/apoyar/:path(.*)",
       "destination": "/es/",
       "permanent": true
     },
     {
-      "source": "/support/:path*",
+      "source": "/support/:path(.*)",
       "destination": "/",
       "permanent": true
     }
